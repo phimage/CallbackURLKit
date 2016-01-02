@@ -7,16 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C418B1D41C3860190097FDD9 /* CallbackURLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418B1D31C3860190097FDD9 /* CallbackURLKit.swift */; };
+		C418B1DD1C386C160097FDD9 /* CallbackURLKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C418B1E21C386C1E0097FDD9 /* CallbackURLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418B1D31C3860190097FDD9 /* CallbackURLKit.swift */; };
+		C418B1E31C386C1E0097FDD9 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51D1C37E11F00DB3306 /* Manager.swift */; };
+		C418B1E41C386C1E0097FDD9 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51B1C37DF0900DB3306 /* Client.swift */; };
+		C418B1E51C386C1E0097FDD9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51F1C380F5100DB3306 /* Request.swift */; };
+		C418B1E61C386C1E0097FDD9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D5211C380F6B00DB3306 /* Extensions.swift */; };
 		C4A8D5141C37D84A00DB3306 /* CallbackURLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4A8D51C1C37DF0900DB3306 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51B1C37DF0900DB3306 /* Client.swift */; };
+		C4A8D51E1C37E11F00DB3306 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51D1C37E11F00DB3306 /* Manager.swift */; };
+		C4A8D5201C380F5100DB3306 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51F1C380F5100DB3306 /* Request.swift */; };
+		C4A8D5221C380F6B00DB3306 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D5211C380F6B00DB3306 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C418B1D31C3860190097FDD9 /* CallbackURLKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallbackURLKit.swift; sourceTree = "<group>"; };
+		C418B1DA1C386C160097FDD9 /* CallbackURLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallbackURLKitOSX.h; sourceTree = "<group>"; };
+		C418B1DE1C386C160097FDD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A8D5101C37D84A00DB3306 /* CallbackURLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallbackURLKit.h; sourceTree = "<group>"; };
 		C4A8D5151C37D84A00DB3306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4A8D51B1C37DF0900DB3306 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		C4A8D51D1C37E11F00DB3306 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		C4A8D51F1C380F5100DB3306 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		C4A8D5211C380F6B00DB3306 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C418B1D61C386C160097FDD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4A8D50C1C37D84A00DB3306 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -27,10 +53,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C418B1DB1C386C160097FDD9 /* CallbackURLKitOSX */ = {
+			isa = PBXGroup;
+			children = (
+				C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */,
+				C418B1DE1C386C160097FDD9 /* Info.plist */,
+			);
+			path = CallbackURLKitOSX;
+			sourceTree = "<group>";
+		};
 		C4A8D5061C37D84A00DB3306 = {
 			isa = PBXGroup;
 			children = (
 				C4A8D5121C37D84A00DB3306 /* CallbackURLKit */,
+				C418B1DB1C386C160097FDD9 /* CallbackURLKitOSX */,
 				C4A8D5111C37D84A00DB3306 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A8D5101C37D84A00DB3306 /* CallbackURLKit.framework */,
+				C418B1DA1C386C160097FDD9 /* CallbackURLKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,6 +83,11 @@
 		C4A8D5121C37D84A00DB3306 /* CallbackURLKit */ = {
 			isa = PBXGroup;
 			children = (
+				C418B1D31C3860190097FDD9 /* CallbackURLKit.swift */,
+				C4A8D51D1C37E11F00DB3306 /* Manager.swift */,
+				C4A8D51B1C37DF0900DB3306 /* Client.swift */,
+				C4A8D51F1C380F5100DB3306 /* Request.swift */,
+				C4A8D5211C380F6B00DB3306 /* Extensions.swift */,
 				C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */,
 				C4A8D5151C37D84A00DB3306 /* Info.plist */,
 			);
@@ -55,6 +97,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		C418B1D71C386C160097FDD9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C418B1DD1C386C160097FDD9 /* CallbackURLKitOSX.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4A8D50D1C37D84A00DB3306 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +116,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C418B1D91C386C160097FDD9 /* CallbackURLKitOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C418B1DF1C386C160097FDD9 /* Build configuration list for PBXNativeTarget "CallbackURLKitOSX" */;
+			buildPhases = (
+				C418B1D51C386C160097FDD9 /* Sources */,
+				C418B1D61C386C160097FDD9 /* Frameworks */,
+				C418B1D71C386C160097FDD9 /* Headers */,
+				C418B1D81C386C160097FDD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CallbackURLKitOSX;
+			productName = CallbackURLKitOSX;
+			productReference = C418B1DA1C386C160097FDD9 /* CallbackURLKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		C4A8D50F1C37D84A00DB3306 /* CallbackURLKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A8D5181C37D84A00DB3306 /* Build configuration list for PBXNativeTarget "CallbackURLKit" */;
@@ -93,6 +161,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = phimage;
 				TargetAttributes = {
+					C418B1D91C386C160097FDD9 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					C4A8D50F1C37D84A00DB3306 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -111,11 +182,19 @@
 			projectRoot = "";
 			targets = (
 				C4A8D50F1C37D84A00DB3306 /* CallbackURLKit */,
+				C418B1D91C386C160097FDD9 /* CallbackURLKitOSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C418B1D81C386C160097FDD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4A8D50E1C37D84A00DB3306 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,16 +205,75 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C418B1D51C386C160097FDD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C418B1E61C386C1E0097FDD9 /* Extensions.swift in Sources */,
+				C418B1E21C386C1E0097FDD9 /* CallbackURLKit.swift in Sources */,
+				C418B1E51C386C1E0097FDD9 /* Request.swift in Sources */,
+				C418B1E31C386C1E0097FDD9 /* Manager.swift in Sources */,
+				C418B1E41C386C1E0097FDD9 /* Client.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4A8D50B1C37D84A00DB3306 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A8D51C1C37DF0900DB3306 /* Client.swift in Sources */,
+				C4A8D5221C380F6B00DB3306 /* Extensions.swift in Sources */,
+				C4A8D5201C380F5100DB3306 /* Request.swift in Sources */,
+				C4A8D51E1C37E11F00DB3306 /* Manager.swift in Sources */,
+				C418B1D41C3860190097FDD9 /* CallbackURLKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		C418B1E01C386C160097FDD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CallbackURLKitOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitOSX;
+				PRODUCT_NAME = CallbackURLKit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C418B1E11C386C160097FDD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CallbackURLKitOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitOSX;
+				PRODUCT_NAME = CallbackURLKit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		C4A8D5161C37D84A00DB3306 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -228,6 +366,7 @@
 		C4A8D5191C37D84A00DB3306 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -238,12 +377,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		C4A8D51A1C37D84A00DB3306 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -260,6 +401,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C418B1DF1C386C160097FDD9 /* Build configuration list for PBXNativeTarget "CallbackURLKitOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C418B1E01C386C160097FDD9 /* Debug */,
+				C418B1E11C386C160097FDD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C4A8D50A1C37D84A00DB3306 /* Build configuration list for PBXProject "CallbackURLKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -276,6 +425,7 @@
 				C4A8D51A1C37D84A00DB3306 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
