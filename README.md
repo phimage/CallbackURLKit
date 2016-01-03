@@ -8,7 +8,7 @@
              )](https://developer.apple.com/swift)
 [![Issues](https://img.shields.io/github/issues/phimage/CallbackURLKit.svg?style=flat
            )](https://github.com/phimage/CallbackURLKit/issues)
-[![Cocoapod](http://img.shields.io/cocoapods/v/CallbackURLKit.svg?style=flat)](http://cocoadocs.org/docsets/Prephirences/)
+[![Cocoapod](http://img.shields.io/cocoapods/v/CallbackURLKit.svg?style=flat)](http://cocoadocs.org/docsets/CallbackURLKit/)
 [![Join the chat at https://gitter.im/phimage/CallbackURLKit](https://img.shields.io/badge/GITTER-join%20chat-00D06F.svg)](https://gitter.im/phimage/CallbackURLKit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [<img align="left" src="logo.png" hspace="20">](#logo) Starting to integrate URL scheme in an app,
@@ -66,7 +66,7 @@ see full sample into [Clients](/Clients) directory. *(You can PR to add new `Cli
 You can check that an application respond to the URL scheme using `client.appInstalled`
 
 #### Use callback closure
-Callbacks allow you to receives informations or status from the targeted applications but before you need to [add x-callback-url support to your app](add-x-callback-url-support-to-your-app).
+Callbacks allow you to receives informations or status from the targeted applications but before you need to [add x-callback-url support to your app](#add-x-callback-url-support-to-your-app).
 
 Then you can specify one of the 3 x-callbacks: success, failure and cancel
 
