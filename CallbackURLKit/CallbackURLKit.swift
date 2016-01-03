@@ -32,7 +32,7 @@ public typealias ActionHandler = (Parameters, SuccessCallback, FailureCallback, 
 public typealias Parameters = [String: String]
 
 // Callback for response
-public typealias SuccessCallback = (result : [String: String]) -> Void
+public typealias SuccessCallback = (Parameters?) -> Void
 public typealias FailureCallback = (FailureCallbackErrorType) -> Void
 public typealias CancelCallback = () -> Void
 
@@ -41,17 +41,17 @@ public typealias CancelCallback = () -> Void
 
 
 // Perform an action on client application
-// - Parameter URLScheme: The URLScheme for application to apply action.
 // - Parameter action: The action to perform.
+// - Parameter URLScheme: The URLScheme for application to apply action.
 // - Parameter parameters: Optional parameters for the action.
 // - Parameter onSuccess: callback for success.
 // - Parameter onFailure: callback for failure.
 // - Parameter onCancel: callback for cancel.
 //
 // Throws: CallbackURLKitError
-public func performAction(URLScheme: String, action: Action, parameters: Parameters = [:],
+public func performAction(action: Action, URLScheme: String, parameters: Parameters = [:],
     onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
-        try Manager.performAction(URLScheme, action: action, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
+        try Manager.performAction(action, URLScheme: URLScheme, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
 }
 
 public func registerAction(action: Action, actionHandler: ActionHandler) {
@@ -68,6 +68,7 @@ public protocol FailureCallbackErrorType: ErrorType {
 let CallbackURLKitErrorDomain = "CallbackURLKit"
 public let ErrorNotSupportedAction = 1 // "(action) not supported by (appName)"
 public let ErrorMissingParameter = 2 // when handling an action, could return an error to show that parameters are missing
+public let ErrorMissingErrorCode = 3
 
 extension NSError: FailureCallbackErrorType {
     public var message: String { return localizedDescription }

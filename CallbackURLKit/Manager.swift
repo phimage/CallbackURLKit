@@ -79,7 +79,7 @@ public class Manager {
                 if let rawType = parameters[kResponseType], responseType = ResponseType(rawValue: rawType) {
                     switch responseType {
                     case .success:
-                        request.successCallback?(result: actionParameters)
+                        request.successCallback?(actionParameters)
                     case .error:
                         request.failureCallback?(request.client.errorForCode(parameters[kXCUErrorCode], message: parameters[kXCUErrorMessage]))
                     case .cancel:
@@ -93,17 +93,19 @@ public class Manager {
             return false
         }
         else if let actionHandler = actions[action] { // handle the action
-            let success =  { (returnParams: Parameters) in
+            let successCallback =  { (returnParams: Parameters?) in
                 if let urlString = parameters[kXCUSuccess], url = NSURL(string: urlString) {
                     // returnParams
                     let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
-                    comp.query = (comp.query ?? "") + returnParams.query
+                    if let query = returnParams?.query {
+                        comp.query = (comp.query ?? "") + query
+                    }
                     if let newURL = comp.URL {
                         Manager.openURL(newURL)
                     }
                 }
             }
-            let failure = { (error: FailureCallbackErrorType) in
+            let failureCallback = { (error: FailureCallbackErrorType) in
                 if let urlString = parameters[kXCUError], url = NSURL(string: urlString) {
                     
                     var errorParams: Parameters = [:]
@@ -117,13 +119,13 @@ public class Manager {
                     }
                 }
             }
-            let cancel = {
+            let cancelCallback = {
                 if let urlString = parameters[kXCUCancel], url = NSURL(string: urlString) {
                     Manager.openURL(url)
                 }
             }
             
-            actionHandler(actionParameters, success, failure, cancel)
+            actionHandler(actionParameters, successCallback, failureCallback, cancelCallback)
             return true
         }
         else {
@@ -148,23 +150,32 @@ public class Manager {
 
     // Perform an action on client application
     // - Parameter action: The action to perform.
-    // - Parameter action: The action to perform.
+    // - Parameter URLScheme: The application scheme to apply action.
     // - Parameter parameters: Optional parameters for the action.
     // - Parameter onSuccess: callback for success.
     // - Parameter onFailure: callback for failure.
     // - Parameter onCancel: callback for cancel.
     //
     // Throws: CallbackURLKitError
-    public func performAction(URLScheme: String, action: Action, parameters: Parameters = [:],
+    public func performAction(action: Action, URLScheme: String, parameters: Parameters = [:],
         onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
             let client = Client(URLScheme: URLScheme)
             client.manager = self
             try client.performAction(action, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
 
-    public static func performAction(URLScheme: String, action: Action, parameters: Parameters = [:],
+    public static func performAction(action: Action, URLScheme: String, parameters: Parameters = [:],
         onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
-            try Manager.sharedInstance.performAction(URLScheme, action: action, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
+            try Manager.sharedInstance.performAction(action, URLScheme: URLScheme, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
+    }
+    
+    // Utility function to get URL schemes from Info.plist
+    public static var URLSchemes: [String]? {
+        guard let urlTypes = NSBundle.mainBundle().infoDictionary?["CFBundleURLTypes"] as? [[String: AnyObject]] else {
+            return nil
+        }
+        let schemes = urlTypes.flatMap{ $0["CFBundleURLSchemes"] }
+        return schemes as? [String]
     }
 
     // MARK: internal
@@ -203,7 +214,7 @@ public class Manager {
             if request.hasCallback {
                 requests[request.ID] = request
             }
-            
+
         }
         else if request.hasCallback {
             throw CallbackURLKitError.CallbackURLSchemeNotDefined
@@ -241,4 +252,5 @@ public class Manager {
         }
         return NSBundle.mainBundle().infoDictionary?["CFBundleDisplayName"] as? String ?? "CallbackURLKit"
     }
+
 }

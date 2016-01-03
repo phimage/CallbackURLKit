@@ -56,7 +56,7 @@ public class Client {
     // - Parameter onCancel: callback for cancel.
     //
     // Throws: CallbackURLKitError
-    
+
     public func performAction(action: Action, parameters: Parameters = [:],
         onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
 
@@ -69,11 +69,16 @@ public class Client {
             let manager = self.manager ?? Manager.sharedInstance
             try manager.sendRequest(request)
     }
-    
+
     // Return an error according to url, could be changed to fulfiled your need
     public func errorForCode(code: String?, message: String?) -> FailureCallbackErrorType {
-        let codeInt = 30 //TODO convert string to int
-        
+        let codeInt: Int
+        if let c = code, ci = Int(c)  {
+            codeInt = ci
+        } else {
+            codeInt = ErrorMissingErrorCode
+        }
+
         var userInfo = [String: String]()
         if let msg = message {
             userInfo[NSLocalizedDescriptionKey] = msg

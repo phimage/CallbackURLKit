@@ -19,6 +19,8 @@
 		C4A8D51E1C37E11F00DB3306 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51D1C37E11F00DB3306 /* Manager.swift */; };
 		C4A8D5201C380F5100DB3306 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51F1C380F5100DB3306 /* Request.swift */; };
 		C4A8D5221C380F6B00DB3306 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D5211C380F6B00DB3306 /* Extensions.swift */; };
+		C4E32D591C398AE1005CD033 /* CallbackURLKitClients.h in Headers */ = {isa = PBXBuildFile; fileRef = C4E32D581C398AE1005CD033 /* CallbackURLKitClients.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4E32D5E1C398AE5005CD033 /* GoogleChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,10 @@
 		C4A8D51D1C37E11F00DB3306 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		C4A8D51F1C380F5100DB3306 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		C4A8D5211C380F6B00DB3306 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleChrome.swift; path = Clients/GoogleChrome.swift; sourceTree = "<group>"; };
+		C4E32D561C398AE1005CD033 /* CallbackURLKitClients.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKitClients.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E32D581C398AE1005CD033 /* CallbackURLKitClients.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallbackURLKitClients.h; sourceTree = "<group>"; };
+		C4E32D5A1C398AE1005CD033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C4A8D50C1C37D84A00DB3306 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4E32D521C398AE1005CD033 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -67,6 +80,8 @@
 			children = (
 				C4A8D5121C37D84A00DB3306 /* CallbackURLKit */,
 				C418B1DB1C386C160097FDD9 /* CallbackURLKitOSX */,
+				C4E32D501C398AAE005CD033 /* Clients */,
+				C4E32D571C398AE1005CD033 /* CallbackURLKitClients */,
 				C4A8D5111C37D84A00DB3306 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +91,7 @@
 			children = (
 				C4A8D5101C37D84A00DB3306 /* CallbackURLKit.framework */,
 				C418B1DA1C386C160097FDD9 /* CallbackURLKit.framework */,
+				C4E32D561C398AE1005CD033 /* CallbackURLKitClients.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +110,23 @@
 			path = CallbackURLKit;
 			sourceTree = "<group>";
 		};
+		C4E32D501C398AAE005CD033 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
+		C4E32D571C398AE1005CD033 /* CallbackURLKitClients */ = {
+			isa = PBXGroup;
+			children = (
+				C4E32D581C398AE1005CD033 /* CallbackURLKitClients.h */,
+				C4E32D5A1C398AE1005CD033 /* Info.plist */,
+			);
+			path = CallbackURLKitClients;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -110,6 +143,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4A8D5141C37D84A00DB3306 /* CallbackURLKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4E32D531C398AE1005CD033 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4E32D591C398AE1005CD033 /* CallbackURLKitClients.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +193,24 @@
 			productReference = C4A8D5101C37D84A00DB3306 /* CallbackURLKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		C4E32D551C398AE1005CD033 /* CallbackURLKitClients */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4E32D5B1C398AE1005CD033 /* Build configuration list for PBXNativeTarget "CallbackURLKitClients" */;
+			buildPhases = (
+				C4E32D511C398AE1005CD033 /* Sources */,
+				C4E32D521C398AE1005CD033 /* Frameworks */,
+				C4E32D531C398AE1005CD033 /* Headers */,
+				C4E32D541C398AE1005CD033 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CallbackURLKitClients;
+			productName = CallbackURLKitClients;
+			productReference = C4E32D561C398AE1005CD033 /* CallbackURLKitClients.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,6 +224,9 @@
 						CreatedOnToolsVersion = 7.2;
 					};
 					C4A8D50F1C37D84A00DB3306 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					C4E32D551C398AE1005CD033 = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -183,6 +245,7 @@
 			targets = (
 				C4A8D50F1C37D84A00DB3306 /* CallbackURLKit */,
 				C418B1D91C386C160097FDD9 /* CallbackURLKitOSX */,
+				C4E32D551C398AE1005CD033 /* CallbackURLKitClients */,
 			);
 		};
 /* End PBXProject section */
@@ -196,6 +259,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C4A8D50E1C37D84A00DB3306 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4E32D541C398AE1005CD033 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -226,6 +296,14 @@
 				C4A8D5201C380F5100DB3306 /* Request.swift in Sources */,
 				C4A8D51E1C37E11F00DB3306 /* Manager.swift in Sources */,
 				C418B1D41C3860190097FDD9 /* CallbackURLKit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4E32D511C398AE1005CD033 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4E32D5E1C398AE5005CD033 /* GoogleChrome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +476,38 @@
 			};
 			name = Release;
 		};
+		C4E32D5C1C398AE1005CD033 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CallbackURLKitClients/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitClients;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C4E32D5D1C398AE1005CD033 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CallbackURLKitClients/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitClients;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -408,6 +518,7 @@
 				C418B1E11C386C160097FDD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4A8D50A1C37D84A00DB3306 /* Build configuration list for PBXProject "CallbackURLKit" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +537,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C4E32D5B1C398AE1005CD033 /* Build configuration list for PBXNativeTarget "CallbackURLKitClients" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4E32D5C1C398AE1005CD033 /* Debug */,
+				C4E32D5D1C398AE1005CD033 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
