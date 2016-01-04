@@ -29,12 +29,15 @@ extension String {
         let pairs: [String] = self.componentsSeparatedByString("&")
         for pair in pairs {
             var comps: [String] = pair.componentsSeparatedByString("=")
-            if comps.count == 2 {
-                result[comps[0]] = comps[1].stringByRemovingPercentEncoding
+            if comps.count >= 2 {
+                let key = comps[0]
+                let value = comps.dropFirst().joinWithSeparator("=")
+                result[key] = value.stringByRemovingPercentEncoding
             }
         }
         return result
     }
+
 }
 
 extension Dictionary {
@@ -42,8 +45,8 @@ extension Dictionary {
     var query: String {
         var parts = [String]()
         for (key, value) in self {
-            let keyString = "\(key)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-            let valueString = "\(value)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            let keyString = "\(key)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            let valueString = "\(value)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
             let query = "\(keyString)=\(valueString)"
             parts.append(query)
         }

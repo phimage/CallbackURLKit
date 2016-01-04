@@ -40,7 +40,7 @@ struct Request {
         let components = NSURLComponents()
         components.scheme = self.client.URLScheme
         components.host = kXCUHost
-        components.path = self.action
+        components.path = "/\(self.action)"
         components.query = (parameters + query).query
         return components
     }
