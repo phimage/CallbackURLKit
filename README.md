@@ -18,7 +18,7 @@ CallbackURLKit.registerAction("play") { parameters, ... in
   self.player.play()
 }
 ```
-Want to interact with one of numerous other applications which implement already [x-callback-url](http://x-callback-url.com/apps/), you can also use this framework.
+Want to interact with one of the numerous other applications which implement already [x-callback-url](http://x-callback-url.com/apps/), you can also use this framework.
 
 ```swift
 CallbackURLKit.performAction("open", URLScheme: "googlechrome-x-callback",
@@ -39,7 +39,7 @@ try Manager.sharedInstance.performAction("actionName", URLScheme: "application-n
     parameters: ["key1": "value1"])
 ```
 
-#### Declare targetd applications URL schemes in iOS9
+#### Declare targeted applications URL schemes in iOS9
 In iOS 9 you must whitelist any URL schemes your app wants to query in Info.plist under the *LSApplicationQueriesSchemes* key (an array of strings)
 
 ![xcode-white-list](http://useyourloaf.com/assets/images/2015/2015-09-06-001.png)
@@ -125,16 +125,16 @@ func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEv
     }
 }
 ```
-Or if you have no other need with URL events you can let manager do all the job by calling into `applicationDidFinishLaunching`
-```swift
-manager.registerToURLEvent()
-```
+Or in OSX if you have no other need with URL events you can let manager do all the job by calling into `applicationDidFinishLaunching`
+the method `Manager.registerToURLEvent()`
+
 
 #### Add new action
 The client application will interact with your application using the following URL Structure.
+
 `[url-scheme]://x-callback-url/[action]?[x-callback parameters]&[action parameters]`
 
-An action is defined by its name, the url path, and optional action `parameters`.
+An action is defined by its name (the url path), and optional action `parameters`.
 
 ```swift
 manager["myActionName"] = { parameters, success, failure, cancel in
