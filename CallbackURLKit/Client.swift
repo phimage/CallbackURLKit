@@ -76,15 +76,9 @@ public class Client {
         if let c = code, ci = Int(c)  {
             codeInt = ci
         } else {
-            codeInt = ErrorMissingErrorCode
+            codeInt = Error.Code.MissingErrorCode.rawValue
         }
-
-        var userInfo = [String: String]()
-        if let msg = message {
-            userInfo[NSLocalizedDescriptionKey] = msg
-        }
-        
-        return NSError(domain: CallbackURLKitErrorDomain, code: codeInt, userInfo: userInfo)
+        return Error.errorWithCode(codeInt, failureReason: message ?? "")
     }
 
 }

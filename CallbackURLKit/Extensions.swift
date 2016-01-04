@@ -73,3 +73,18 @@ extension Dictionary {
     
 }
 func +<K, V> (left: [K : V], right: [K : V]) -> [K : V] { return left.join(right) }
+
+
+extension NSURLComponents {
+    func addToQuery(add: String) {
+        if let query = self.query {
+            self.query = query + "&" + add
+        } else {
+            self.query = add
+        }
+    }
+    
+}
+
+func &= (left: NSURLComponents, right: String) {  left.addToQuery(right) }
+

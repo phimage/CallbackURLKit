@@ -125,6 +125,11 @@ func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEv
     }
 }
 ```
+Or if you have no other need with URL events you can let manager do all the job by calling into `applicationDidFinishLaunching`
+```swift
+manager.registerToURLEvent()
+```
+
 #### Add new action
 The client application will interact with your application using the following URL Structure.
 `[url-scheme]://x-callback-url/[action]?[x-callback parameters]&[action parameters]`

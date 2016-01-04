@@ -69,8 +69,8 @@ public class Manager {
 
         let action = String(path.characters.dropFirst()) // remove /
 
-        var parameters = url.query?.parseURLParams ?? [:]
-        let actionParameters = Manager.filterProtocolParameters(parameters)
+        let parameters = url.query?.parseURLParams ?? [:]
+        let actionParameters = Manager.actionParameters(parameters)
         
         // is a reponse?
         if action == kResponse {
@@ -98,7 +98,7 @@ public class Manager {
                     // returnParams
                     let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
                     if let query = returnParams?.query {
-                        comp.query = (comp.query ?? "") + query
+                        comp &= query
                     }
                     if let newURL = comp.URL {
                         Manager.openURL(newURL)
@@ -107,13 +107,8 @@ public class Manager {
             }
             let failureCallback = { (error: FailureCallbackErrorType) in
                 if let urlString = parameters[kXCUError], url = NSURL(string: urlString) {
-                    
-                    var errorParams: Parameters = [:]
-                    errorParams[kXCUErrorCode] = "\(error.code)"
-                    errorParams[kXCUErrorMessage] = error.message
-                    
                     let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
-                    comp.query = (comp.query ?? "") + errorParams.query
+                    comp &= error.XCUErrorQuery
                     if let newURL = comp.URL {
                         Manager.openURL(newURL)
                     }
@@ -131,12 +126,10 @@ public class Manager {
         else {
             // unknown action, notifiy it
             if let errorURLString = parameters[kXCUError], url = NSURL(string: errorURLString) {
-                var errorParams: Parameters = [:]
-                errorParams[kXCUErrorCode] = "\(ErrorNotSupportedAction)"
-                errorParams[kXCUErrorMessage] = "\(action) not supported by \(Manager.appName)"
-                
+                let error = Error.errorWithCode(.NotSupportedAction, failureReason: "\(action) not supported by \(Manager.appName)")
+   
                 let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
-                comp.query = (comp.query ?? "") + errorParams.query
+                comp &= error.XCUErrorQuery
                 if let newURL = comp.URL {
                     Manager.openURL(newURL)
                 }
@@ -144,6 +137,11 @@ public class Manager {
             }
         }
         return false
+    }
+
+    // Handle url with manager shared instance
+    public static func handleOpenURL(url: NSURL) -> Bool {
+        return self.sharedInstance.handleOpenURL(url)
     }
     
     // MARK: - perform action with temporary client
@@ -174,8 +172,13 @@ public class Manager {
         guard let urlTypes = NSBundle.mainBundle().infoDictionary?["CFBundleURLTypes"] as? [[String: AnyObject]] else {
             return nil
         }
-        let schemes = urlTypes.flatMap{ $0["CFBundleURLSchemes"] }
-        return schemes as? [String]
+        var result = [String]()
+        for urlType in urlTypes {
+            if let schemes = urlType["CFBundleURLSchemes"] as? [String] {
+                result += schemes
+            }
+        }
+        return result.isEmpty ? nil : result
     }
 
     // MARK: internal
@@ -194,10 +197,8 @@ public class Manager {
             xcuComponents.scheme = scheme
             xcuComponents.host = kXCUHost
             xcuComponents.path = kResponse
-            
-            
-            var xcuParams: Parameters = [:]
-            xcuParams[kRequestID] = request.ID
+ 
+            let xcuParams: Parameters = [kRequestID: request.ID]
             
             if request.successCallback != nil {
                 xcuComponents.query = (xcuParams + [kResponseType: ResponseType.success.rawValue]).query
@@ -227,12 +228,12 @@ public class Manager {
         Manager.openURL(URL)
     }
 
-    static func filterProtocolParameters(dictionary: [String : String]) -> [String : String] {
-        let resultArray: [(String, String)] = dictionary.filter { tuple in
+    static func actionParameters(parameters: [String : String]) -> [String : String] {
+        let resultArray: [(String, String)] = parameters.filter { tuple in
             return !(tuple.0.hasPrefix(kXCUPrefix) || protocolKeys.contains(tuple.0))
         }
         var result = [String: String](resultArray)
-        if let source = dictionary[kXCUSource] {
+        if let source = parameters[kXCUSource] {
             result[kXCUSource] = source
         }
         return result
@@ -254,3 +255,21 @@ public class Manager {
     }
 
 }
+
+
+#if os(OSX)
+extension Manager {
+
+    public func registerToURLEvent() {
+        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector:"handleGetURLEvent:withReplyEvent:", forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+    }
+
+    public func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent replyEvent: NSAppleEventDescriptor!)
+    {
+        if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) {
+            handleOpenURL(url)
+        }
+    }
+
+}
+#endif
