@@ -153,7 +153,7 @@ CallbackURLKit.registerAction("myActionName") { parameters, success, failure, ca
 
 ## Installation
 
-## Using Cocoapods ##
+## Using CocoaPods ##
 [CocoaPods](https://cocoapods.org/) is a centralized dependency manager for
 Objective-C and Swift. Go [here](https://guides.cocoapods.org/using/index.html)
 to learn more.
