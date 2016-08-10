@@ -201,15 +201,15 @@ public class Manager {
             let xcuParams: Parameters = [kRequestID: request.ID]
             
             if request.successCallback != nil {
-                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.success.rawValue]).query.ampersandEncoded
-                query[kXCUSuccess] = xcuComponents.URL?.absoluteString ?? ""
+                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.success.rawValue]).query
+                query[kXCUSuccess] = xcuComponents.URL?.absoluteString.ampersandEncoded ?? ""
                 
-                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.cancel.rawValue]).query.ampersandEncoded
-                query[kXCUCancel] = xcuComponents.URL?.absoluteString ?? ""
+                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.cancel.rawValue]).query
+                query[kXCUCancel] = xcuComponents.URL?.absoluteString.ampersandEncoded ?? ""
             }
             if request.failureCallback != nil {
-                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.error.rawValue]).query.ampersandEncoded
-                query[kXCUError] = xcuComponents.URL?.absoluteString ?? ""
+                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.error.rawValue]).query
+                query[kXCUError] = xcuComponents.URL?.absoluteString.ampersandEncoded ?? ""
             }
             
             if request.hasCallback {
