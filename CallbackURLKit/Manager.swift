@@ -202,14 +202,14 @@ public class Manager {
             
             if request.successCallback != nil {
                 xcuComponents.query = (xcuParams + [kResponseType: ResponseType.success.rawValue]).query
-                query[kXCUSuccess] = xcuComponents.URL?.absoluteString ?? ""
+                query[kXCUSuccess] = xcuComponents.URL?.absoluteString.ampersandEncoded ?? ""
                 
                 xcuComponents.query = (xcuParams + [kResponseType: ResponseType.cancel.rawValue]).query
-                query[kXCUCancel] = xcuComponents.URL?.absoluteString ?? ""
+                query[kXCUCancel] = xcuComponents.URL?.absoluteString.ampersandEncoded ?? ""
             }
             if request.failureCallback != nil {
                 xcuComponents.query = (xcuParams + [kResponseType: ResponseType.error.rawValue]).query
-                query[kXCUError] = xcuComponents.URL?.absoluteString ?? ""
+                query[kXCUError] = xcuComponents.URL?.absoluteString.ampersandEncoded ?? ""
             }
             
             if request.hasCallback {
