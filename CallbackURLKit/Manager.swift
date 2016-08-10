@@ -196,7 +196,7 @@ public class Manager {
             let xcuComponents = NSURLComponents()
             xcuComponents.scheme = scheme
             xcuComponents.host = kXCUHost
-            xcuComponents.path = kResponse
+            xcuComponents.path = "/" + kResponse
  
             let xcuParams: Parameters = [kRequestID: request.ID]
             
