@@ -38,6 +38,10 @@ extension String {
         return result
     }
 
+    var ampersandEncoded: String? {
+        let nonAmpersandCharacters = NSCharacterSet(charactersInString: "&").invertedSet
+        return self.stringByAddingPercentEncodingWithAllowedCharacters(nonAmpersandCharacters)
+    }
 }
 
 extension Dictionary {
