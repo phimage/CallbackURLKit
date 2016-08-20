@@ -113,21 +113,8 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
     return true
 }
 ```
-On OSX
-```swift
-func applicationDidFinishLaunching(aNotification: NSNotification) {
-    ...
-    NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector:"handleGetURLEvent:withReplyEvent:", forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
-}
-func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
-    if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) {
-        manager.handleOpenURL(url)
-    }
-}
-```
-Or in OSX if you have no other need with URL events you can let manager do all the job by calling into `applicationDidFinishLaunching`
-the method `Manager.registerToURLEvent()`
-
+On OSX if you have no other need with URL events you can let manager do all the job by calling into `applicationDidFinishLaunching`
+the method `Manager.instance.registerToURLEvent()`
 
 #### Add new action
 The client application will interact with your application using the following URL Structure.

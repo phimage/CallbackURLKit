@@ -69,7 +69,7 @@ public class Manager {
 
         let action = String(path.characters.dropFirst()) // remove /
 
-        let parameters = url.query?.parseURLParams ?? [:]
+        let parameters = url.query?.toQueryDictionary ?? [:]
         let actionParameters = Manager.actionParameters(parameters)
         
         // is a reponse?
@@ -93,31 +93,20 @@ public class Manager {
             return false
         }
         else if let actionHandler = actions[action] { // handle the action
-            let successCallback =  { (returnParams: Parameters?) in
-                if let urlString = parameters[kXCUSuccess], url = NSURL(string: urlString) {
-                    // returnParams
-                    let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
-                    if let query = returnParams?.query {
+            let successCallback: SuccessCallback =  { [weak self] returnParams in
+                self?.openCallback(parameters, type: .success) { comp in
+                    if let query = returnParams?.queryString {
                         comp &= query
                     }
-                    if let newURL = comp.URL {
-                        Manager.openURL(newURL)
-                    }
                 }
             }
-            let failureCallback = { (error: FailureCallbackErrorType) in
-                if let urlString = parameters[kXCUError], url = NSURL(string: urlString) {
-                    let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
+            let failureCallback: FailureCallback = { [weak self] error in
+                self?.openCallback(parameters, type: .error) { comp in
                     comp &= error.XCUErrorQuery
-                    if let newURL = comp.URL {
-                        Manager.openURL(newURL)
-                    }
                 }
             }
-            let cancelCallback = {
-                if let urlString = parameters[kXCUCancel], url = NSURL(string: urlString) {
-                    Manager.openURL(url)
-                }
+            let cancelCallback: CancelCallback = { [weak self] in
+                self?.openCallback(parameters, type: .cancel)
             }
             
             actionHandler(actionParameters, successCallback, failureCallback, cancelCallback)
@@ -137,6 +126,16 @@ public class Manager {
             }
         }
         return false
+    }
+    
+    private func openCallback(parameters: [String : String], type: ResponseType, handler: ((NSURLComponents) -> Void)? = nil ) {
+        if let urlString = parameters[type.key], url = NSURL(string: urlString),
+            comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false) {
+            handler?(comp)
+            if let newURL = comp.URL {
+                Manager.openURL(newURL)
+            }
+        }
     }
 
     // Handle url with manager shared instance
@@ -183,6 +182,7 @@ public class Manager {
 
     // MARK: internal
 
+
     func sendRequest(request: Request) throws {
         if !request.client.appInstalled {
             throw CallbackURLKitError.AppWithSchemeNotInstalled(scheme: request.client.URLScheme)
@@ -199,17 +199,12 @@ public class Manager {
             xcuComponents.path = "/" + kResponse
  
             let xcuParams: Parameters = [kRequestID: request.ID]
-            
-            if request.successCallback != nil {
-                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.success.rawValue]).query
-                query[kXCUSuccess] = xcuComponents.URL?.absoluteString ?? ""
-                
-                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.cancel.rawValue]).query
-                query[kXCUCancel] = xcuComponents.URL?.absoluteString ?? ""
-            }
-            if request.failureCallback != nil {
-                xcuComponents.query = (xcuParams + [kResponseType: ResponseType.error.rawValue]).query
-                query[kXCUError] = xcuComponents.URL?.absoluteString ?? ""
+
+            for reponseType in request.responseTypes {
+                xcuComponents.queryDictionary = xcuParams + [kResponseType: reponseType.rawValue]
+                if let urlString = xcuComponents.URL?.absoluteString {
+                    query[reponseType.key] = urlString
+                }
             }
             
             if request.hasCallback {
@@ -248,7 +243,7 @@ public class Manager {
     }
 
     static var appName: String {
-        if let appName = NSBundle.mainBundle().localizedInfoDictionary?["CFBundleDisplayName"] as? String{
+        if let appName = NSBundle.mainBundle().localizedInfoDictionary?["CFBundleDisplayName"] as? String {
             return appName
         }
         return NSBundle.mainBundle().infoDictionary?["CFBundleDisplayName"] as? String ?? "CallbackURLKit"
@@ -261,11 +256,10 @@ public class Manager {
 extension Manager {
 
     public func registerToURLEvent() {
-        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector:"handleGetURLEvent:withReplyEvent:", forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector: #selector(Manager.handleURLEvent(_:withReply:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
     }
 
-    public func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent replyEvent: NSAppleEventDescriptor!)
-    {
+    @objc public func handleURLEvent(event: NSAppleEventDescriptor, withReply replyEvent: NSAppleEventDescriptor) {
         if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) {
             handleOpenURL(url)
         }

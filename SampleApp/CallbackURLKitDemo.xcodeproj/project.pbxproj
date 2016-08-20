@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		2D82E9831C46ED3DB8D898C8 /* Pods_CallbackURLKitDemoOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFE74F8F5010842B34724E9 /* Pods_CallbackURLKitDemoOSX.framework */; };
 		574DDA2DC910102F338C8BDB /* Pods_CallbackURLKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899A43CB2504DC3678E479C9 /* Pods_CallbackURLKitDemo.framework */; };
-		C46E5DA31C399EBF0061E818 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E5DA21C399EBF0061E818 /* Shared.swift */; };
-		C46E5DA41C399EBF0061E818 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E5DA21C399EBF0061E818 /* Shared.swift */; };
-		C4A4AA871C399A1500932E7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A4AA861C399A1500932E7D /* AppDelegate.swift */; };
-		C4A4AA891C399A1500932E7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A4AA881C399A1500932E7D /* ViewController.swift */; };
+		C46E5DA31C399EBF0061E818 /* CallbackURLKitDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E5DA21C399EBF0061E818 /* CallbackURLKitDemo.swift */; };
+		C46E5DA41C399EBF0061E818 /* CallbackURLKitDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E5DA21C399EBF0061E818 /* CallbackURLKitDemo.swift */; };
+		C47767001D68B01E00A66C25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E32D6B1C3999AE005CD033 /* AppDelegate.swift */; };
+		C47767011D68B08000A66C25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E32D6D1C3999AE005CD033 /* ViewController.swift */; };
 		C4A4AA8E1C399A1500932E7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A4AA8C1C399A1500932E7D /* Main.storyboard */; };
 		C4E32D6C1C3999AE005CD033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E32D6B1C3999AE005CD033 /* AppDelegate.swift */; };
 		C4E32D6E1C3999AE005CD033 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E32D6D1C3999AE005CD033 /* ViewController.swift */; };
@@ -26,10 +26,8 @@
 		899A43CB2504DC3678E479C9 /* Pods_CallbackURLKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CallbackURLKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94ACDE1068C6A2C95BE32518 /* Pods-CallbackURLKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallbackURLKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CallbackURLKitDemo/Pods-CallbackURLKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		BEFE74F8F5010842B34724E9 /* Pods_CallbackURLKitDemoOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CallbackURLKitDemoOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C46E5DA21C399EBF0061E818 /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		C46E5DA21C399EBF0061E818 /* CallbackURLKitDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallbackURLKitDemo.swift; sourceTree = "<group>"; };
 		C4A4AA841C399A1500932E7D /* CallbackURLKitDemoOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallbackURLKitDemoOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4A4AA861C399A1500932E7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4A4AA881C399A1500932E7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C4A4AA8D1C399A1500932E7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4A4AA8F1C399A1500932E7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4E32D681C3999AE005CD033 /* CallbackURLKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallbackURLKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,8 +82,6 @@
 		C4A4AA851C399A1500932E7D /* CallbackURLKitDemoOSX */ = {
 			isa = PBXGroup;
 			children = (
-				C4A4AA861C399A1500932E7D /* AppDelegate.swift */,
-				C4A4AA881C399A1500932E7D /* ViewController.swift */,
 				C4A4AA8C1C399A1500932E7D /* Main.storyboard */,
 				C4A4AA8F1C399A1500932E7D /* Info.plist */,
 			);
@@ -115,12 +111,12 @@
 		C4E32D6A1C3999AE005CD033 /* CallbackURLKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C46E5DA21C399EBF0061E818 /* CallbackURLKitDemo.swift */,
 				C4E32D6B1C3999AE005CD033 /* AppDelegate.swift */,
 				C4E32D6D1C3999AE005CD033 /* ViewController.swift */,
 				C4E32D6F1C3999AE005CD033 /* Main.storyboard */,
 				C4E32D741C3999AE005CD033 /* LaunchScreen.storyboard */,
 				C4E32D771C3999AE005CD033 /* Info.plist */,
-				C46E5DA21C399EBF0061E818 /* Shared.swift */,
 			);
 			path = CallbackURLKitDemo;
 			sourceTree = "<group>";
@@ -323,9 +319,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C46E5DA41C399EBF0061E818 /* Shared.swift in Sources */,
-				C4A4AA891C399A1500932E7D /* ViewController.swift in Sources */,
-				C4A4AA871C399A1500932E7D /* AppDelegate.swift in Sources */,
+				C47767001D68B01E00A66C25 /* AppDelegate.swift in Sources */,
+				C46E5DA41C399EBF0061E818 /* CallbackURLKitDemo.swift in Sources */,
+				C47767011D68B08000A66C25 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C46E5DA31C399EBF0061E818 /* Shared.swift in Sources */,
+				C46E5DA31C399EBF0061E818 /* CallbackURLKitDemo.swift in Sources */,
 				C4E32D6E1C3999AE005CD033 /* ViewController.swift in Sources */,
 				C4E32D6C1C3999AE005CD033 /* AppDelegate.swift in Sources */,
 			);

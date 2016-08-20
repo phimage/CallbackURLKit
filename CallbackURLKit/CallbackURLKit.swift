@@ -69,7 +69,7 @@ extension FailureCallbackErrorType {
         return [kXCUErrorCode: "\(self.code)", kXCUErrorMessage: self.message]
     }
     public var XCUErrorQuery: String {
-        return XCUErrorParameters.query
+        return XCUErrorParameters.queryString
     }
 }
 

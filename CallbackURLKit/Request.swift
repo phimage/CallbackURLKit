@@ -41,7 +41,7 @@ struct Request {
         components.scheme = self.client.URLScheme
         components.host = kXCUHost
         components.path = "/\(self.action)"
-        components.query = (parameters + query).query
+        components.queryDictionary = (parameters + query)
         return components
     }
 
@@ -49,10 +49,36 @@ struct Request {
         return successCallback != nil || failureCallback != nil || cancelCallback != nil
     }
 
-}
+    var responseTypes: [ResponseType] {
+        var responseTypes = [ResponseType]()
+        if self.successCallback != nil {
+            responseTypes.append(.success)
+        }
+        if self.cancelCallback != nil {
+            responseTypes.append(.cancel)
+        }
+        if self.failureCallback != nil {
+            responseTypes.append(.error)
+        }
+        return responseTypes
+    }
 
+}
+// Callback response type
 enum ResponseType: String {
     case success
     case error
     case cancel
+    
+    var key: String {
+        switch self {
+        case .success:
+            return kXCUSuccess
+        case .error:
+            return kXCUError
+        case .cancel:
+            return kXCUCancel
+        }
+    }
 }
+

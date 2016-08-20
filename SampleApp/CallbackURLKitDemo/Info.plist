@@ -5,6 +5,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlechrome-x-callback</string>
+		<string>callbackurlkit</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "CallbackURLKit"
-  s.version      = "0.1.2"
+  s.version      = "0.2.0"
   s.summary      = "Implemenation of x-callback-url in swift"
   s.homepage     = "https://github.com/phimage/CallbackURLKit"
 
