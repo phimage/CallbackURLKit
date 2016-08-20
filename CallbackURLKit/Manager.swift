@@ -97,6 +97,9 @@ public class Manager {
                 if let urlString = parameters[kXCUSuccess], url = NSURL(string: urlString) {
                     // returnParams
                     let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
+		    if let requestID = parameters[kRequestID] {
+                        comp &= "\(kRequestID)=\(requestID)"
+                    }
                     if let query = returnParams?.query {
                         comp &= query
                     }
@@ -108,6 +111,9 @@ public class Manager {
             let failureCallback = { (error: FailureCallbackErrorType) in
                 if let urlString = parameters[kXCUError], url = NSURL(string: urlString) {
                     let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
+		    if let requestID = parameters[kRequestID] {
+                        comp &= "\(kRequestID)=\(requestID)"
+                    }
                     comp &= error.XCUErrorQuery
                     if let newURL = comp.URL {
                         Manager.openURL(newURL)
@@ -116,7 +122,13 @@ public class Manager {
             }
             let cancelCallback = {
                 if let urlString = parameters[kXCUCancel], url = NSURL(string: urlString) {
-                    Manager.openURL(url)
+		    let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
+                    if let requestID = parameters[kRequestID] {
+                        comp &= "\(kRequestID)=\(requestID)"
+                    }
+                    if let newURL = comp.URL {
+                        Manager.openURL(newURL)
+                    }
                 }
             }
             
