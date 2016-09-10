@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "CallbackURLKit"
-  s.version      = "0.2.0"
+  s.version      = "1.0.0"
   s.summary      = "Implemenation of x-callback-url in swift"
   s.homepage     = "https://github.com/phimage/CallbackURLKit"
 
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.default_subspecs = 'Core'
 
   s.subspec "Core" do  |sp|
-    sp.source_files = "CallbackURLKit/*.swift"
+    sp.source_files = "Sources/*.swift"
   end
 
   s.subspec "GoogleChrome" do  |sp|

@@ -3,7 +3,7 @@
 //  CallbackURLKit
 /*
 The MIT License (MIT)
-Copyright (c) 2015 Eric Marchand (phimage)
+Copyright (c) 2016 Eric Marchand (phimage)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -28,10 +28,10 @@ import Foundation
     import AppKit
 #endif
 
-public class Manager {
+open class Manager {
 
     // singletong shared instance
-    public static let sharedInstance = Manager()
+    open static let shared = Manager()
 
     // List of action/action closure
     var actions: [Action: ActionHandler] = [:]
@@ -39,19 +39,19 @@ public class Manager {
     var requests: [RequestID: Request] = [:]
     
     // Specify an URL scheme for callback
-    public var callbackURLScheme: String?
+    open var callbackURLScheme: String?
     
     init() {
     }
     
     // Add an action handler ie. url path and block
-    public subscript(action: Action) -> ActionHandler? {
+    open subscript(action: Action) -> ActionHandler? {
         get {
             return actions[action]
         }
         set {
             if newValue == nil {
-                actions.removeValueForKey(action)
+                actions.removeValue(forKey: action)
             } else {
                 actions[action] = newValue
             }
@@ -59,34 +59,32 @@ public class Manager {
     }
 
     // Handle url from app delegate
-    public func handleOpenURL(url: NSURL) -> Bool {
+    open func handleOpen(url: URL) -> Bool {
         if url.scheme != self.callbackURLScheme || url.host != kXCUHost {
             return false
         }
-        guard let path = url.path else {
-            return false
-        }
+        let path = url.path
 
         let action = String(path.characters.dropFirst()) // remove /
 
         let parameters = url.query?.toQueryDictionary ?? [:]
-        let actionParameters = Manager.actionParameters(parameters)
+        let actionParameters = Manager.action(parameters: parameters)
         
         // is a reponse?
         if action == kResponse {
-            if let requestID = parameters[kRequestID] /*as? RequestID*/, request = requests[requestID] {
+            if let requestID = parameters[kRequestID] /*as? RequestID*/, let request = requests[requestID] {
                 
-                if let rawType = parameters[kResponseType], responseType = ResponseType(rawValue: rawType) {
+                if let rawType = parameters[kResponseType], let responseType = ResponseType(rawValue: rawType) {
                     switch responseType {
                     case .success:
                         request.successCallback?(actionParameters)
                     case .error:
-                        request.failureCallback?(request.client.errorForCode(parameters[kXCUErrorCode], message: parameters[kXCUErrorMessage]))
+                        request.failureCallback?(request.client.error(forCode: parameters[kXCUErrorCode], message: parameters[kXCUErrorMessage]))
                     case .cancel:
                         request.cancelCallback?()
                     }
                     
-                    requests.removeValueForKey(requestID)
+                    requests.removeValue(forKey: requestID)
                 }
                 return true
             }
@@ -114,13 +112,13 @@ public class Manager {
         }
         else {
             // unknown action, notifiy it
-            if let errorURLString = parameters[kXCUError], url = NSURL(string: errorURLString) {
-                let error = Error.errorWithCode(.NotSupportedAction, failureReason: "\(action) not supported by \(Manager.appName)")
+            if let errorURLString = parameters[kXCUError], let url = URL(string: errorURLString) {
+                let error = NSError.error(code: .notSupportedAction, failureReason: "\(action) not supported by \(Manager.appName)")
    
-                let comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
+                var comp = URLComponents(url: url, resolvingAgainstBaseURL: false)!
                 comp &= error.XCUErrorQuery
-                if let newURL = comp.URL {
-                    Manager.openURL(newURL)
+                if let newURL = comp.url {
+                    Manager.open(url: newURL)
                 }
                 return true
             }
@@ -128,47 +126,47 @@ public class Manager {
         return false
     }
     
-    private func openCallback(parameters: [String : String], type: ResponseType, handler: ((NSURLComponents) -> Void)? = nil ) {
-        if let urlString = parameters[type.key], url = NSURL(string: urlString),
-            comp = NSURLComponents(URL: url, resolvingAgainstBaseURL: false) {
-            handler?(comp)
-            if let newURL = comp.URL {
-                Manager.openURL(newURL)
+    fileprivate func openCallback(_ parameters: [String : String], type: ResponseType, handler: ((inout URLComponents) -> Void)? = nil ) {
+        if let urlString = parameters[type.key], let url = URL(string: urlString),
+            var comp = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+            handler?(&comp)
+            if let newURL = comp.url {
+                Manager.open(url: newURL)
             }
         }
     }
 
     // Handle url with manager shared instance
-    public static func handleOpenURL(url: NSURL) -> Bool {
-        return self.sharedInstance.handleOpenURL(url)
+    open static func handleOpen(url: URL) -> Bool {
+        return self.shared.handleOpen(url: url)
     }
     
     // MARK: - perform action with temporary client
 
     // Perform an action on client application
     // - Parameter action: The action to perform.
-    // - Parameter URLScheme: The application scheme to apply action.
+    // - Parameter urlScheme: The application scheme to apply action.
     // - Parameter parameters: Optional parameters for the action.
     // - Parameter onSuccess: callback for success.
     // - Parameter onFailure: callback for failure.
     // - Parameter onCancel: callback for cancel.
     //
     // Throws: CallbackURLKitError
-    public func performAction(action: Action, URLScheme: String, parameters: Parameters = [:],
+    open func perform(action: Action, urlScheme: String, parameters: Parameters = [:],
         onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
-            let client = Client(URLScheme: URLScheme)
+            let client = Client(urlScheme: urlScheme)
             client.manager = self
-            try client.performAction(action, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
+        try client.perform(action: action, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
 
-    public static func performAction(action: Action, URLScheme: String, parameters: Parameters = [:],
+    open static func perform(action: Action, urlScheme: String, parameters: Parameters = [:],
         onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
-            try Manager.sharedInstance.performAction(action, URLScheme: URLScheme, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
+        try Manager.shared.perform(action: action, urlScheme: urlScheme, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
     
     // Utility function to get URL schemes from Info.plist
-    public static var URLSchemes: [String]? {
-        guard let urlTypes = NSBundle.mainBundle().infoDictionary?["CFBundleURLTypes"] as? [[String: AnyObject]] else {
+    open static var urlSchemes: [String]? {
+        guard let urlTypes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: AnyObject]] else {
             return nil
         }
         var result = [String]()
@@ -183,9 +181,9 @@ public class Manager {
     // MARK: internal
 
 
-    func sendRequest(request: Request) throws {
+    func send(request: Request) throws {
         if !request.client.appInstalled {
-            throw CallbackURLKitError.AppWithSchemeNotInstalled(scheme: request.client.URLScheme)
+            throw CallbackURLKitError.appWithSchemeNotInstalled(scheme: request.client.urlScheme)
         }
         
         var query: Parameters = [:]
@@ -193,7 +191,7 @@ public class Manager {
         
         if let scheme = self.callbackURLScheme {
             
-            let xcuComponents = NSURLComponents()
+            var xcuComponents = URLComponents()
             xcuComponents.scheme = scheme
             xcuComponents.host = kXCUHost
             xcuComponents.path = "/" + kResponse
@@ -202,7 +200,7 @@ public class Manager {
 
             for reponseType in request.responseTypes {
                 xcuComponents.queryDictionary = xcuParams + [kResponseType: reponseType.rawValue]
-                if let urlString = xcuComponents.URL?.absoluteString {
+                if let urlString = xcuComponents.url?.absoluteString {
                     query[reponseType.key] = urlString
                 }
             }
@@ -213,17 +211,17 @@ public class Manager {
 
         }
         else if request.hasCallback {
-            throw CallbackURLKitError.CallbackURLSchemeNotDefined
+            throw CallbackURLKitError.callbackURLSchemeNotDefined
         }
         let components = request.URLComponents(query)
-        guard let URL = components.URL else {
-            throw CallbackURLKitError.FailedToCreateRequestURL(components: components)
+        guard let URL = components.url else {
+            throw CallbackURLKitError.failedToCreateRequestURL(components: components)
         }
 
-        Manager.openURL(URL)
+        Manager.open(url: URL)
     }
 
-    static func actionParameters(parameters: [String : String]) -> [String : String] {
+    static func action(parameters: [String : String]) -> [String : String] {
         let resultArray: [(String, String)] = parameters.filter { tuple in
             return !(tuple.0.hasPrefix(kXCUPrefix) || protocolKeys.contains(tuple.0))
         }
@@ -234,19 +232,19 @@ public class Manager {
         return result
     }
 
-    static func openURL(URL: NSURL) {
+    static func open(url: Foundation.URL) {
         #if os(iOS) || os(tvOS)
-            UIApplication.sharedApplication().openURL(URL)
+            UIApplication.shared.openURL(url)
         #elseif os(OSX)
-            NSWorkspace.sharedWorkspace().openURL(URL)
+            NSWorkspace.shared().open(url)
         #endif
     }
 
     static var appName: String {
-        if let appName = NSBundle.mainBundle().localizedInfoDictionary?["CFBundleDisplayName"] as? String {
+        if let appName = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
             return appName
         }
-        return NSBundle.mainBundle().infoDictionary?["CFBundleDisplayName"] as? String ?? "CallbackURLKit"
+        return Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "CallbackURLKit"
     }
 
 }
@@ -256,12 +254,12 @@ public class Manager {
 extension Manager {
 
     public func registerToURLEvent() {
-        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector: #selector(Manager.handleURLEvent(_:withReply:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(Manager.handleURLEvent(_:withReply:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
     }
 
-    @objc public func handleURLEvent(event: NSAppleEventDescriptor, withReply replyEvent: NSAppleEventDescriptor) {
-        if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) {
-            handleOpenURL(url)
+    @objc public func handleURLEvent(_ event: NSAppleEventDescriptor, withReply replyEvent: NSAppleEventDescriptor) {
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = URL(string: urlString) {
+            let _ = handleOpen(url: url)
         }
     }
 

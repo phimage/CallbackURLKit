@@ -3,7 +3,7 @@
 //  CallbackURLKit
 /*
 The MIT License (MIT)
-Copyright (c) 2015 Eric Marchand (phimage)
+Copyright (c) 2016 Eric Marchand (phimage)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -36,9 +36,9 @@ struct Request {
     let cancelCallback: CancelCallback?
 
     // [scheme]://[host]/[action]?[x-callback parameters]&[action parameters]
-    func URLComponents(query: Parameters) -> NSURLComponents {
-        let components = NSURLComponents()
-        components.scheme = self.client.URLScheme
+    func URLComponents(_ query: Parameters) -> Foundation.URLComponents {
+        var components = Foundation.URLComponents()
+        components.scheme = self.client.urlScheme
         components.host = kXCUHost
         components.path = "/\(self.action)"
         components.queryDictionary = (parameters + query)

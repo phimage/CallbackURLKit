@@ -7,34 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C418B1D41C3860190097FDD9 /* CallbackURLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418B1D31C3860190097FDD9 /* CallbackURLKit.swift */; };
 		C418B1DD1C386C160097FDD9 /* CallbackURLKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C418B1E21C386C1E0097FDD9 /* CallbackURLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418B1D31C3860190097FDD9 /* CallbackURLKit.swift */; };
-		C418B1E31C386C1E0097FDD9 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51D1C37E11F00DB3306 /* Manager.swift */; };
-		C418B1E41C386C1E0097FDD9 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51B1C37DF0900DB3306 /* Client.swift */; };
-		C418B1E51C386C1E0097FDD9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51F1C380F5100DB3306 /* Request.swift */; };
-		C418B1E61C386C1E0097FDD9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D5211C380F6B00DB3306 /* Extensions.swift */; };
 		C4A8D5141C37D84A00DB3306 /* CallbackURLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C4A8D51C1C37DF0900DB3306 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51B1C37DF0900DB3306 /* Client.swift */; };
-		C4A8D51E1C37E11F00DB3306 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51D1C37E11F00DB3306 /* Manager.swift */; };
-		C4A8D5201C380F5100DB3306 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D51F1C380F5100DB3306 /* Request.swift */; };
-		C4A8D5221C380F6B00DB3306 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8D5211C380F6B00DB3306 /* Extensions.swift */; };
+		C4DB1E311D8421DE008DD3FB /* CallbackURLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2C1D8421DE008DD3FB /* CallbackURLKit.swift */; };
+		C4DB1E321D8421DE008DD3FB /* CallbackURLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2C1D8421DE008DD3FB /* CallbackURLKit.swift */; };
+		C4DB1E331D8421DE008DD3FB /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2D1D8421DE008DD3FB /* Client.swift */; };
+		C4DB1E341D8421DE008DD3FB /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2D1D8421DE008DD3FB /* Client.swift */; };
+		C4DB1E351D8421DE008DD3FB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2E1D8421DE008DD3FB /* Extensions.swift */; };
+		C4DB1E361D8421DE008DD3FB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2E1D8421DE008DD3FB /* Extensions.swift */; };
+		C4DB1E371D8421DE008DD3FB /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2F1D8421DE008DD3FB /* Manager.swift */; };
+		C4DB1E381D8421DE008DD3FB /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2F1D8421DE008DD3FB /* Manager.swift */; };
+		C4DB1E391D8421DE008DD3FB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E301D8421DE008DD3FB /* Request.swift */; };
+		C4DB1E3A1D8421DE008DD3FB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E301D8421DE008DD3FB /* Request.swift */; };
 		C4E32D591C398AE1005CD033 /* CallbackURLKitClients.h in Headers */ = {isa = PBXBuildFile; fileRef = C4E32D581C398AE1005CD033 /* CallbackURLKitClients.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4E32D5E1C398AE5005CD033 /* GoogleChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C418B1D31C3860190097FDD9 /* CallbackURLKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallbackURLKit.swift; sourceTree = "<group>"; };
 		C418B1DA1C386C160097FDD9 /* CallbackURLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallbackURLKitOSX.h; sourceTree = "<group>"; };
 		C418B1DE1C386C160097FDD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A8D5101C37D84A00DB3306 /* CallbackURLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallbackURLKit.h; sourceTree = "<group>"; };
 		C4A8D5151C37D84A00DB3306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C4A8D51B1C37DF0900DB3306 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		C4A8D51D1C37E11F00DB3306 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		C4A8D51F1C380F5100DB3306 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		C4A8D5211C380F6B00DB3306 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C4DB1E2C1D8421DE008DD3FB /* CallbackURLKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallbackURLKit.swift; sourceTree = "<group>"; };
+		C4DB1E2D1D8421DE008DD3FB /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		C4DB1E2E1D8421DE008DD3FB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C4DB1E2F1D8421DE008DD3FB /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		C4DB1E301D8421DE008DD3FB /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleChrome.swift; path = Clients/GoogleChrome.swift; sourceTree = "<group>"; };
 		C4E32D561C398AE1005CD033 /* CallbackURLKitClients.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKitClients.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E32D581C398AE1005CD033 /* CallbackURLKitClients.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallbackURLKitClients.h; sourceTree = "<group>"; };
@@ -78,6 +78,7 @@
 		C4A8D5061C37D84A00DB3306 = {
 			isa = PBXGroup;
 			children = (
+				C4DB1E2B1D8421DE008DD3FB /* Sources */,
 				C4A8D5121C37D84A00DB3306 /* CallbackURLKit */,
 				C418B1DB1C386C160097FDD9 /* CallbackURLKitOSX */,
 				C4E32D501C398AAE005CD033 /* Clients */,
@@ -99,15 +100,22 @@
 		C4A8D5121C37D84A00DB3306 /* CallbackURLKit */ = {
 			isa = PBXGroup;
 			children = (
-				C418B1D31C3860190097FDD9 /* CallbackURLKit.swift */,
-				C4A8D51D1C37E11F00DB3306 /* Manager.swift */,
-				C4A8D51B1C37DF0900DB3306 /* Client.swift */,
-				C4A8D51F1C380F5100DB3306 /* Request.swift */,
-				C4A8D5211C380F6B00DB3306 /* Extensions.swift */,
 				C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */,
 				C4A8D5151C37D84A00DB3306 /* Info.plist */,
 			);
 			path = CallbackURLKit;
+			sourceTree = "<group>";
+		};
+		C4DB1E2B1D8421DE008DD3FB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C4DB1E2C1D8421DE008DD3FB /* CallbackURLKit.swift */,
+				C4DB1E2D1D8421DE008DD3FB /* Client.swift */,
+				C4DB1E2E1D8421DE008DD3FB /* Extensions.swift */,
+				C4DB1E2F1D8421DE008DD3FB /* Manager.swift */,
+				C4DB1E301D8421DE008DD3FB /* Request.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		C4E32D501C398AAE005CD033 /* Clients */ = {
@@ -217,7 +225,7 @@
 		C4A8D5071C37D84A00DB3306 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = phimage;
 				TargetAttributes = {
 					C418B1D91C386C160097FDD9 = {
@@ -225,6 +233,7 @@
 					};
 					C4A8D50F1C37D84A00DB3306 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 					C4E32D551C398AE1005CD033 = {
 						CreatedOnToolsVersion = 7.2;
@@ -279,11 +288,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C418B1E61C386C1E0097FDD9 /* Extensions.swift in Sources */,
-				C418B1E21C386C1E0097FDD9 /* CallbackURLKit.swift in Sources */,
-				C418B1E51C386C1E0097FDD9 /* Request.swift in Sources */,
-				C418B1E31C386C1E0097FDD9 /* Manager.swift in Sources */,
-				C418B1E41C386C1E0097FDD9 /* Client.swift in Sources */,
+				C4DB1E341D8421DE008DD3FB /* Client.swift in Sources */,
+				C4DB1E361D8421DE008DD3FB /* Extensions.swift in Sources */,
+				C4DB1E3A1D8421DE008DD3FB /* Request.swift in Sources */,
+				C4DB1E321D8421DE008DD3FB /* CallbackURLKit.swift in Sources */,
+				C4DB1E381D8421DE008DD3FB /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,11 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4A8D51C1C37DF0900DB3306 /* Client.swift in Sources */,
-				C4A8D5221C380F6B00DB3306 /* Extensions.swift in Sources */,
-				C4A8D5201C380F5100DB3306 /* Request.swift in Sources */,
-				C4A8D51E1C37E11F00DB3306 /* Manager.swift in Sources */,
-				C418B1D41C3860190097FDD9 /* CallbackURLKit.swift in Sources */,
+				C4DB1E331D8421DE008DD3FB /* Client.swift in Sources */,
+				C4DB1E351D8421DE008DD3FB /* Extensions.swift in Sources */,
+				C4DB1E391D8421DE008DD3FB /* Request.swift in Sources */,
+				C4DB1E311D8421DE008DD3FB /* CallbackURLKit.swift in Sources */,
+				C4DB1E371D8421DE008DD3FB /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +322,7 @@
 		C418B1E01C386C160097FDD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -328,13 +337,14 @@
 				PRODUCT_NAME = CallbackURLKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		C418B1E11C386C160097FDD9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -349,6 +359,7 @@
 				PRODUCT_NAME = CallbackURLKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -365,8 +376,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -413,8 +426,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -434,6 +449,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -445,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -456,6 +473,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -463,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -473,12 +492,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		C4E32D5C1C398AE1005CD033 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -489,12 +510,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitClients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		C4E32D5D1C398AE1005CD033 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -505,6 +528,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitClients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -545,6 +569,7 @@
 				C4E32D5D1C398AE1005CD033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

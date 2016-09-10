@@ -3,7 +3,7 @@
 //  CallbackURLKit
 /*
 The MIT License (MIT)
-Copyright (c) 2015 Eric Marchand (phimage)
+Copyright (c) 2016 Eric Marchand (phimage)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -28,12 +28,12 @@ extension String {
 
     var toQueryDictionary: [String : String] {
         var result: [String : String] = [String : String]()
-        let pairs: [String] = self.componentsSeparatedByString("&")
+        let pairs: [String] = self.components(separatedBy: "&")
         for pair in pairs {
-            var comps: [String] = pair.componentsSeparatedByString("=")
+            var comps: [String] = pair.components(separatedBy: "=")
             if comps.count >= 2 {
                 let key = comps[0]
-                let value = comps.dropFirst().joinWithSeparator("=")
+                let value = comps.dropFirst().joined(separator: "=")
                 result[key.queryDecode] = value.queryDecode
             }
         }
@@ -44,18 +44,18 @@ extension String {
         let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
         let subDelimitersToEncode = "!$&'()*+,;="
         
-        let allowedCharacterSet = NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
-        allowedCharacterSet.removeCharactersInString(generalDelimitersToEncode + subDelimitersToEncode)
+        var allowedCharacterSet = CharacterSet.urlQueryAllowed
+        allowedCharacterSet.remove(charactersIn : generalDelimitersToEncode + subDelimitersToEncode)
         
-        return self.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacterSet) ?? self
+        return self.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? self
     }
     
     var queryEncode: String {
-        return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) ?? self
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? self
     }
     
     var queryDecode: String {
-        return self.stringByRemovingPercentEncoding ?? self
+        return self.removingPercentEncoding ?? self
     }
 
 }
@@ -71,10 +71,10 @@ extension Dictionary {
             let query = "\(keyString)=\(valueString)"
             parts.append(query)
         }
-        return parts.joinWithSeparator("&") as String
+        return parts.joined(separator: "&") as String
     }
     
-    private func join(other: Dictionary) -> Dictionary {
+    fileprivate func join(_ other: Dictionary) -> Dictionary {
         var joinedDictionary = Dictionary()
         
         for (key, value) in self {
@@ -100,7 +100,7 @@ func +<K, V> (left: [K : V], right: [K : V]) -> [K : V] { return left.join(right
 
 
 // MARK: NSURLComponents
-extension NSURLComponents {
+extension URLComponents {
 
     var queryDictionary: [String: String] {
         get {
@@ -118,7 +118,7 @@ extension NSURLComponents {
         }
     }
 
-    private func addToQuery(add: String) {
+    fileprivate mutating func addToQuery(_ add: String) {
         if let query = self.percentEncodedQuery {
             self.percentEncodedQuery = query + "&" + add
         } else {
@@ -128,5 +128,5 @@ extension NSURLComponents {
     
 }
 
-func &= (left: NSURLComponents, right: String) { left.addToQuery(right) }
+func &= (left: inout URLComponents, right: String) { left.addToQuery(right) }
 

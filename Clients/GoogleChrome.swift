@@ -3,7 +3,7 @@
 //  CallbackURLKit
 /*
 The MIT License (MIT)
-Copyright (c) 2015 Eric Marchand (phimage)
+Copyright (c) 2016 Eric Marchand (phimage)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -25,16 +25,16 @@ SOFTWARE.
 public class GoogleChrome: Client {
 
     public init() {
-        super.init(URLScheme: "googlechrome-x-callback")
+        super.init(urlScheme: "googlechrome-x-callback")
     }
 
-    public func openURL(url: String, newTab: Bool = false,
+    public func open(url: String, newTab: Bool = false,
         onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
             var parameters = ["url": url]
             if newTab {
                 parameters = ["create-new-tab": ""]
             }
-            try self.performAction("open", parameters: parameters,
+        try self.perform(action: "open", parameters: parameters,
                 onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
 

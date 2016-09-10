@@ -3,7 +3,7 @@
 //  CallbackURLKit
 /*
 The MIT License (MIT)
-Copyright (c) 2015 Eric Marchand (phimage)
+Copyright (c) 2016 Eric Marchand (phimage)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -28,23 +28,23 @@ import Foundation
 #endif
 
 // Client application
-public class Client {
+open class Client {
 
-    public var URLScheme: String
-    public var manager: Manager?
+    open var urlScheme: String
+    open var manager: Manager?
     
-    public init(URLScheme: String) {
-        self.URLScheme = URLScheme
+    public init(urlScheme: String) {
+        self.urlScheme = urlScheme
     }
  
-    public var appInstalled: Bool {
-        guard let url = NSURL(string:"\(self.URLScheme)://dummy") else {
+    open var appInstalled: Bool {
+        guard let url = URL(string:"\(self.urlScheme)://dummy") else {
             return false
         }
         #if os(iOS) || os(tvOS)
-            return UIApplication.sharedApplication().canOpenURL(url)
+            return UIApplication.shared.canOpenURL(url)
         #elseif os(OSX)
-            return NSWorkspace.sharedWorkspace().URLForApplicationToOpenURL(url) != nil
+            return NSWorkspace.shared().urlForApplication(toOpen: url) != nil
         #endif
     }
 
@@ -57,28 +57,28 @@ public class Client {
     //
     // Throws: CallbackURLKitError
 
-    public func performAction(action: Action, parameters: Parameters = [:],
-        onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
+    open func perform(action: Action, parameters: Parameters = [:],
+                      onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
+        
+        let request = Request(
+            ID: UUID().uuidString, client: self,
+            action: action, parameters: parameters,
+            successCallback: onSuccess, failureCallback: onFailure, cancelCallback:  onCancel
+        )
 
-            let request = Request(
-                ID: NSUUID().UUIDString, client: self,
-                action: action, parameters: parameters,
-                successCallback: onSuccess, failureCallback: onFailure, cancelCallback:  onCancel
-            )
-            
-            let manager = self.manager ?? Manager.sharedInstance
-            try manager.sendRequest(request)
+        let manager = self.manager ?? Manager.shared
+        try manager.send(request: request)
     }
 
     // Return an error according to url, could be changed to fulfiled your need
-    public func errorForCode(code: String?, message: String?) -> FailureCallbackErrorType {
+    open func error(forCode code: String?, message: String?) -> FailureCallbackError {
         let codeInt: Int
-        if let c = code, ci = Int(c)  {
+        if let c = code, let ci = Int(c)  {
             codeInt = ci
         } else {
-            codeInt = Error.Code.MissingErrorCode.rawValue
+            codeInt = ErrorCode.missingErrorCode.rawValue
         }
-        return Error.errorWithCode(codeInt, failureReason: message ?? "")
+        return NSError.error(code: codeInt, failureReason: message ?? "")
     }
 
 }
