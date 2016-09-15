@@ -79,7 +79,7 @@ open class Manager {
                     case .success:
                         request.successCallback?(actionParameters)
                     case .error:
-                        request.failureCallback?(request.client.error(forCode: parameters[kXCUErrorCode], message: parameters[kXCUErrorMessage]))
+                        request.failureCallback?(request.client.error(code: parameters[kXCUErrorCode], message: parameters[kXCUErrorMessage]))
                     case .cancel:
                         request.cancelCallback?()
                     }

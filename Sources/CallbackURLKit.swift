@@ -54,7 +54,7 @@ public func perform(action: Action, urlScheme: String, parameters: Parameters = 
     try Manager.perform(action: action, urlScheme: urlScheme, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
 }
 
-public func register(action: Action, actionHandler: ActionHandler) {
+public func register(action: Action, actionHandler: @escaping ActionHandler) {
     Manager.shared[action] = actionHandler
 }
 

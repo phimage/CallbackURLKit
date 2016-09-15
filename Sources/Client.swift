@@ -71,7 +71,7 @@ open class Client {
     }
 
     // Return an error according to url, could be changed to fulfiled your need
-    open func error(forCode code: String?, message: String?) -> FailureCallbackError {
+    open func error(code: String?, message: String?) -> FailureCallbackError {
         let codeInt: Int
         if let c = code, let ci = Int(c)  {
             codeInt = ci
