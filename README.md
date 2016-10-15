@@ -14,14 +14,14 @@
 [<img align="left" src="logo.png" hspace="20">](#logo) Starting to integrate URL scheme in an app,
 why not be compliant with [x-callback-url](http://x-callback-url.com/specifications/).
 ```swift
-CallbackURLKit.registerAction("play") { parameters, ... in
+CallbackURLKit.register(action: "play") { parameters, ... in
   self.player.play()
 }
 ```
 Want to interact with one of the numerous other applications which implement already [x-callback-url](http://x-callback-url.com/apps/), you can also use this framework.
 
 ```swift
-CallbackURLKit.performAction("open", URLScheme: "googlechrome-x-callback",
+CallbackURLKit.perform(action: "open", urlScheme: "googlechrome-x-callback",
                              parameters: ["url": "http://www.google.com"])
 ```
 
@@ -30,12 +30,12 @@ CallbackURLKit.performAction("open", URLScheme: "googlechrome-x-callback",
 ### Perform action on other applications
 Anywhere in your code after imported CallbackURLKit you can call
 ```swift
-try CallbackURLKit.performAction("actionName", URLScheme: "applicationName",
+try CallbackURLKit.perform(action: "actionName", urlScheme: "applicationName",
     parameters: ["key1": "value1"])
 ```
 You can also use a new `Manager` or the shared instance
 ```swift
-try Manager.sharedInstance.performAction("actionName", URLScheme: "application-name",
+try Manager.sharedInstance.perform(action: "actionName", urlScheme: "application-name",
     parameters: ["key1": "value1"])
 ```
 
@@ -47,17 +47,17 @@ In iOS 9 you must whitelist any URL schemes your app wants to query in Info.plis
 #### Create a client class
 Alternatively you can create a new `Client` object where you can define the targeted app URL scheme.
 ```swift
-let client = Client(URLScheme: "application-url-scheme")
-try client.performAction(..)
+let client = Client(urlScheme: "application-url-scheme")
+try client.perform(action:(..)
 ```
 or create a new `Client` class to add some utility methods which hide implementation details and allow to make some parameters check.
 ```swift
 class GoogleChrome: Client {
   init() {
-    super.init(URLScheme:"googlechrome-x-callback")
+    super.init(urlScheme:"googlechrome-x-callback")
   }
-  func openURL(url: String, ...) {
-    self.performAction("open", parameters: ["url": url], ...)
+  func open(url: String, ...) {
+    self.perform(action: "open", parameters: ["url": url], ...)
   }
 }
 ```
@@ -71,10 +71,11 @@ Callbacks allow you to receives informations or status from the targeted applica
 Then you can specify one of the 3 x-callbacks: success, failure and cancel
 
 ```swift
-try client.performAction("actionName",
+try client.performn(action: "actionName",
     onSuccess: { parameters in
     },
-    onFailure: { error in
+
+onFailure: { error in
     },
     onCancel: {
     }
@@ -108,11 +109,18 @@ And finally to handle incoming URLs, your application delegate should implement 
 
 On iOS
 ```swift
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-    manager.handleOpenURL(url)
+func application(_ application: UIApplication, open url: NSURL, sourceApplication: String?, annotation: Any) -> Bool {
+    manager.handleOpen(url: url)
+    return true
+}
+
+@available(iOS 9.0, *)
+func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    manager.handleOpen(url: url)
     return true
 }
 ```
+
 On OSX if you have no other need with URL events you can let manager do all the job by calling into `applicationDidFinishLaunching`
 the method `Manager.instance.registerToURLEvent()`
 
@@ -133,7 +141,7 @@ manager["myActionName"] = { parameters, success, failure, cancel in
 ```
 You can also register an action on shared `Manager` instance using
 ```swift
-CallbackURLKit.registerAction("myActionName") { parameters, success, failure, cancel in
+CallbackURLKit.register(action: "myActionName") { parameters, success, failure, cancel in
 
 }
 ```
