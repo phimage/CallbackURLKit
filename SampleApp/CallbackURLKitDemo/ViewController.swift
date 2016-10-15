@@ -22,21 +22,21 @@ extension ViewController {
         super.viewDidLoad()
     }
 
-    @IBAction func openChrome(sender: AnyObject!) {
+    @IBAction func openChrome(_ sender: AnyObject!) {
         let chrome = GoogleChrome()
         do {
-            try chrome.openURL("http://www.google.com")
-        } catch CallbackURLKitError.AppWithSchemeNotInstalled(let scheme) {
+            try chrome.open(url: "http://www.google.com")
+        } catch CallbackURLKitError.appWithSchemeNotInstalled(let scheme) {
             print("chrome(\(scheme)) not installed or not implement x-callback-url in current os")
             
-        } catch CallbackURLKitError.CallbackURLSchemeNotDefined {
+        } catch CallbackURLKitError.callbackURLSchemeNotDefined {
             print("current app scheme not defined")
         } catch let e {
             print("exception \(e)")
         }
     }
     
-    @IBAction func printAction(sender: AnyObject!) {
+    @IBAction func printAction(_ sender: AnyObject!) {
         do {
             try CallbackURLKitDemo.instance.printMessage(
                 "a message  %20 %  = &toto=a",
@@ -47,10 +47,10 @@ extension ViewController {
                     print("\(error)")
                 }
             )
-        } catch CallbackURLKitError.AppWithSchemeNotInstalled(let scheme) {
+        } catch CallbackURLKitError.appWithSchemeNotInstalled(let scheme) {
             print("\(scheme) not installed or not implement x-callback-url in current os")
             
-        } catch CallbackURLKitError.CallbackURLSchemeNotDefined {
+        } catch CallbackURLKitError.callbackURLSchemeNotDefined {
             print("current app scheme not defined")
         } catch let e {
             print("exception \(e)")

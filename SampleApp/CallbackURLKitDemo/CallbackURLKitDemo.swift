@@ -9,47 +9,47 @@
 import Foundation
 import CallbackURLKit
 
-enum DemoErrorType: FailureCallbackErrorType {
-    case NoText
+enum DemoError: FailureCallbackError {
+    case noText
     
     var code: Int {
         switch self {
-        case .NoText: return 0
+        case .noText: return 0
         }
     }
     var message: String {
         switch self {
-        case .NoText: return "You must defined text parameters"
+        case .noText: return "You must defined text parameters"
         }
     }
 }
 
-public class CallbackURLKitDemo: Client {
+open class CallbackURLKitDemo: Client {
     
-    public static let instance = CallbackURLKitDemo()
+    open static let instance = CallbackURLKitDemo()
     
     public init() {
-        super.init(URLScheme: "callbackurlkit")
+        super.init(urlScheme: "callbackurlkit")
     }
     
-    public func printMessage(message: String, onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
+    open func printMessage(_ message: String, onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
         let parameters = ["text": message]
-        try self.performAction(CallbackURLKitDemo.PrintActionString, parameters: parameters,
+        try self.perform(action: CallbackURLKitDemo.PrintActionString, parameters: parameters,
                                onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
     
-    public static let PrintActionString = "print"
-    public static let PrintAction: ActionHandler = { parameters, success, failed, cancel in
+    open static let PrintActionString = "print"
+    open static let PrintAction: ActionHandler = { parameters, success, failed, cancel in
         if let text = parameters["text"] {
             print(text)
-            let formatter = NSDateFormatter()
-            formatter.dateStyle = NSDateFormatterStyle.LongStyle
-            formatter.timeStyle = .MediumStyle
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            formatter.timeStyle = .medium
             
-            let dateString = formatter.stringFromDate(NSDate())
+            let dateString = formatter.string(from: Date())
             success(["text": text, "date": dateString])
         } else {
-            failed(DemoErrorType.NoText)
+            failed(DemoError.noText)
         }
     }
     

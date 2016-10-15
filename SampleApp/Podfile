@@ -8,6 +8,5 @@ end
 
 target 'CallbackURLKitDemoOSX' do
   platform :osx, '10.10'
-    pod 'CallbackURLKit/GoogleChrome’, :path => '../CallbackURLKit.podspec'
+    pod 'CallbackURLKit/GoogleChrome', :path => '../CallbackURLKit.podspec'
 end
-

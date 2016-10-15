@@ -14,17 +14,16 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let manager = Manager.sharedInstance
-        manager.callbackURLScheme = Manager.URLSchemes?.first
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let manager = Manager.shared
+        manager.callbackURLScheme = Manager.urlSchemes?.first
         manager[CallbackURLKitDemo.PrintActionString] = CallbackURLKitDemo.PrintAction
         
         return true
     }
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        Manager.sharedInstance.handleOpenURL(url)
-        return true
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return Manager.shared.handleOpen(url: url)
     }
 
 }
@@ -35,10 +34,10 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let manager = Manager.sharedInstance
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let manager = Manager.shared
         manager.registerToURLEvent()
-        manager.callbackURLScheme = Manager.URLSchemes?.first
+        manager.callbackURLScheme = Manager.urlSchemes?.first
         manager[CallbackURLKitDemo.PrintActionString] = CallbackURLKitDemo.PrintAction
     }
     
