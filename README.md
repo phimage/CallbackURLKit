@@ -35,7 +35,7 @@ try CallbackURLKit.perform(action: "actionName", urlScheme: "applicationName",
 ```
 You can also use a new `Manager` or the shared instance
 ```swift
-try Manager.sharedInstance.perform(action: "actionName", urlScheme: "application-name",
+try Manager.shared.perform(action: "actionName", urlScheme: "application-name",
     parameters: ["key1": "value1"])
 ```
 
@@ -99,10 +99,10 @@ Apple documentation: [Using URL Schemes to Communicate with Apps](https://develo
 #### Setup framework with URL scheme
 Then you must set the scheme to this framework manager
  ```swift
- let manager =  Manager.sharedInstance
+ let manager =  Manager.shared
  manager.callbackURLScheme = "my-application-scheme"
  // or get the first from Info.plist using utility method
- manager.callbackURLScheme = Manager.URLSchemes?.first
+ manager.callbackURLScheme = Manager.urlSchemes?.first
  ```
 #### Handle incoming URLs
 And finally to handle incoming URLs, your application delegate should implement the following methods below.
