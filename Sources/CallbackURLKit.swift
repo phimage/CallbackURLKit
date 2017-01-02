@@ -27,7 +27,7 @@ import Foundation
 // action ie. url path
 public typealias Action = String
 // block which handle action and optionally respond to callback
-public typealias ActionHandler = (Parameters, SuccessCallback, FailureCallback, CancelCallback) -> Void
+public typealias ActionHandler = (Parameters, @escaping SuccessCallback, @escaping FailureCallback, @escaping CancelCallback) -> Void
 // Simple dictionary for parameters
 public typealias Parameters = [String: String]
 
