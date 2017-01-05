@@ -39,6 +39,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         manager.registerToURLEvent()
         manager.callbackURLScheme = Manager.urlSchemes?.first
         manager[CallbackURLKitDemo.PrintActionString] = CallbackURLKitDemo.PrintAction
+        
+        manager["success"] = { (parameters, success, failure, cancel) in
+            DispatchQueue.main.async {
+                success(nil)
+            }
+        }
+
     }
     
 }
