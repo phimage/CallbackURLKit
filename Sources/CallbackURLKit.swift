@@ -35,7 +35,7 @@ public typealias Parameters = [String: String]
 public typealias SuccessCallback = (Parameters?) -> Void
 public typealias FailureCallback = (FailureCallbackError) -> Void
 public typealias CancelCallback = () -> Void
-
+public typealias NoActionMatchCallback = (Parameters?) -> Void
 
 // MARK: global functions
 

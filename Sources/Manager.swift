@@ -41,6 +41,9 @@ open class Manager {
     // Specify an URL scheme for callback
     open var callbackURLScheme: String?
     
+    // no Action Match 
+    open var noMatchActionCallback: NoActionMatchCallback?
+    
     init() {
     }
     
@@ -121,6 +124,10 @@ open class Manager {
                     Manager.open(url: newURL)
                 }
                 return true
+            } else {
+                if let noMatchActionCallback = noMatchActionCallback {
+                    noMatchActionCallback(parameters)
+                }
             }
         }
         return false
