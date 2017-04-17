@@ -45,6 +45,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 success(nil)
             }
         }
+        
+        manager.noMatchActionCallback = { parameters in
+            DispatchQueue.main.async {
+               print("no action match")
+            }
+        }
 
     }
     
