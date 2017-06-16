@@ -71,7 +71,7 @@ Callbacks allow you to receives informations or status from the targeted applica
 Then you can specify one of the 3 x-callbacks: success, failure and cancel
 
 ```swift
-try client.performn(action: "actionName",
+try client.perform(action: "actionName",
     onSuccess: { parameters in
     },
 
