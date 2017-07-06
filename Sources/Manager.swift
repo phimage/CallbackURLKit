@@ -38,12 +38,17 @@ open class Manager {
     // keep request for callback
     var requests: [RequestID: Request] = [:]
     
+    #if CALLBACK_IN_APP_EXTENSIONS
+    // extension context to open url (only if compiled with CALLBACK_IN_APP_EXTENSIONS)
+    open static var extensionContext: NSExtensionContext?
+    #endif
+
     // Specify an URL scheme for callback
     open var callbackURLScheme: String?
-    
+
     init() {
     }
-    
+
     // Add an action handler ie. url path and block
     open subscript(action: Action) -> ActionHandler? {
         get {
@@ -232,9 +237,13 @@ open class Manager {
         return result
     }
 
-    static func open(url: Foundation.URL) {
+    public static func open(url: Foundation.URL) {
         #if os(iOS) || os(tvOS)
-            UIApplication.shared.openURL(url)
+            #if !CALLBACK_IN_APP_EXTENSIONS
+                UIApplication.shared.openURL(url)
+            #else
+                extensionContext?.open(url, completionHandler: nil)
+            #endif
         #elseif os(OSX)
             NSWorkspace.shared().open(url)
         #endif
