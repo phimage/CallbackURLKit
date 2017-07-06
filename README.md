@@ -167,6 +167,7 @@ to learn more.
 To get an already implemented [Clients](/Clients) use one of the subspec
 ```ruby
 pod 'CallbackURLKit/GoogleChrome'
+pod 'CallbackURLKit/Ulysses' // https://ulyssesapp.com
 ```
 
 ## Links

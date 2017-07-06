@@ -4,9 +4,11 @@ use_frameworks!
 target 'CallbackURLKitDemo' do
   platform :ios, '9.0'
 	pod 'CallbackURLKit/GoogleChrome', :path => '../CallbackURLKit.podspec'
+	pod 'CallbackURLKit/Ulysses', :path => '../CallbackURLKit.podspec'
 end
 
 target 'CallbackURLKitDemoOSX' do
   platform :osx, '10.10'
     pod 'CallbackURLKit/GoogleChrome', :path => '../CallbackURLKit.podspec'
+  	pod 'CallbackURLKit/Ulysses', :path => '../CallbackURLKit.podspec'
 end

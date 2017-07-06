@@ -41,7 +41,7 @@ extension ViewController {
             try CallbackURLKitDemo.instance.printMessage(
                 "a message  %20 %  = &toto=a",
                 onSuccess:  { parameters in
-                    print("parameters \(parameters)")
+                    print("parameters \(String(describing: parameters))")
                 },
                 onFailure: { error in
                     print("\(error)")
@@ -56,6 +56,30 @@ extension ViewController {
             print("exception \(e)")
         }
     }
+    
+    @IBAction func ulysseAuthorize(_ sender: AnyObject!) {
+        let ulysses = Ulysses()
+        do {
+            try ulysses.authorize(
+                appName: Manager.shared.callbackURLScheme ?? "callbackUrlKit",
+                onSuccess:  { token in
+                    print("token \(token)")
+            },
+                onFailure: { error in
+                    print("\(error)")
+            }
+            )
+            
+        } catch CallbackURLKitError.appWithSchemeNotInstalled(let scheme) {
+            print("chrome(\(scheme)) not installed or not implement x-callback-url in current os")
+            
+        } catch CallbackURLKitError.callbackURLSchemeNotDefined {
+            print("current app scheme not defined")
+        } catch let e {
+            print("exception \(e)")
+        }
+    }
+    
 
 }
 

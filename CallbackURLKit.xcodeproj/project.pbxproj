@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48D0A14A1F0E28CE0019B815 /* Ulysses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A1491F0E28CE0019B815 /* Ulysses.swift */; };
+		48D0A14B1F0E298B0019B815 /* CallbackURLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A8D5101C37D84A00DB3306 /* CallbackURLKit.framework */; };
 		C418B1DD1C386C160097FDD9 /* CallbackURLKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4A8D5141C37D84A00DB3306 /* CallbackURLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4DB1E311D8421DE008DD3FB /* CallbackURLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2C1D8421DE008DD3FB /* CallbackURLKit.swift */; };
@@ -24,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48D0A1491F0E28CE0019B815 /* Ulysses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ulysses.swift; path = Clients/Ulysses.swift; sourceTree = "<group>"; };
 		C418B1DA1C386C160097FDD9 /* CallbackURLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallbackURLKitOSX.h; sourceTree = "<group>"; };
 		C418B1DE1C386C160097FDD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D0A14B1F0E298B0019B815 /* CallbackURLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */,
+				48D0A1491F0E28CE0019B815 /* Ulysses.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4E32D5E1C398AE5005CD033 /* GoogleChrome.swift in Sources */,
+				48D0A14A1F0E28CE0019B815 /* Ulysses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +475,7 @@
 				INFOPLIST_FILE = CallbackURLKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -489,6 +496,7 @@
 				INFOPLIST_FILE = CallbackURLKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -507,6 +515,7 @@
 				INFOPLIST_FILE = CallbackURLKitClients/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DIMPORT";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitClients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -525,6 +534,7 @@
 				INFOPLIST_FILE = CallbackURLKitClients/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DIMPORT";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitClients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

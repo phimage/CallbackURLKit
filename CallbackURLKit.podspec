@@ -33,4 +33,9 @@ Pod::Spec.new do |s|
     sp.dependency 'CallbackURLKit/Core'
   end
 
+  s.subspec "Ulysses" do  |sp|
+    sp.source_files = "Clients/Ulysses.swift"
+    sp.dependency 'CallbackURLKit/Core'
+  end
+
 end
