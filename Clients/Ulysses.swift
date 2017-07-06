@@ -97,7 +97,7 @@ public class Ulysses: Client {
             parameters["index"] = index
         }
         
-        try self.perform(action: "new-sheet", parameters: parameters, onSuccess: onSuccess, onCancel: onCancel)
+        try self.perform(action: "new-sheet", parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
 
 }
