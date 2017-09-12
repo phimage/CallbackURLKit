@@ -46,7 +46,8 @@ open class Manager {
     // Specify an URL scheme for callback
     open var callbackURLScheme: String?
 
-    init() {
+    public init(callbackURLScheme: String? = nil) {
+        self.callbackURLScheme = callbackURLScheme
     }
 
     // Add an action handler ie. url path and block
