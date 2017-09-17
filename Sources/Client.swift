@@ -3,7 +3,7 @@
 //  CallbackURLKit
 /*
 The MIT License (MIT)
-Copyright (c) 2016 Eric Marchand (phimage)
+Copyright (c) 2017 Eric Marchand (phimage)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -43,8 +43,9 @@ open class Client {
         }
         #if os(iOS) || os(tvOS)
             return UIApplication.shared.canOpenURL(url)
+    
         #elseif os(OSX)
-            return NSWorkspace.shared().urlForApplication(toOpen: url) != nil
+            return NSWorkspace.shared.urlForApplication(toOpen: url) != nil
         #endif
     }
 

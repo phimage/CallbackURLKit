@@ -3,7 +3,7 @@
 //  CallbackURLKit
 /*
  The MIT License (MIT)
- Copyright (c) 2016 Eric Marchand (phimage)
+ Copyright (c) 2017 Eric Marchand (phimage)
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -29,7 +29,7 @@
  https://developer.chrome.com/multidevice/ios/links
  */
 public class GoogleChrome: Client {
-    
+
     #if os(macOS)
     public static let DownloadURL = URL(string: "https://www.google.com/chrome/browser/desktop/index.html")
     #else
@@ -39,16 +39,16 @@ public class GoogleChrome: Client {
     public init() {
         super.init(urlScheme: "googlechrome-x-callback")
     }
-    
+
     /*
      If chrome not installed open itunes.
      */
     public func checkInstalled() {
       if !self.appInstalled, let url = GoogleChrome.DownloadURL {
-        Manager.open(url: url)
+        Manager.shared.open(url: url)
       }
     }
-    
+
     public func open(url: String, newTab: Bool = false,
         onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
             var parameters = ["url": url]

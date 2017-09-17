@@ -40,7 +40,7 @@ try Manager.shared.perform(action: "actionName", urlScheme: "application-name",
 ```
 
 #### Declare targeted applications URL schemes in iOS9
-In iOS 9 you must whitelist any URL schemes your app wants to query in Info.plist under the *LSApplicationQueriesSchemes* key (an array of strings)
+You must whitelist any URL schemes your app wants to query in Info.plist under the *LSApplicationQueriesSchemes* key (an array of strings)
 
 ![xcode-white-list](http://useyourloaf.com/assets/images/2015/2015-09-06-001.png)
 
@@ -109,12 +109,6 @@ And finally to handle incoming URLs, your application delegate should implement 
 
 On iOS
 ```swift
-func application(_ application: UIApplication, open url: NSURL, sourceApplication: String?, annotation: Any) -> Bool {
-    manager.handleOpen(url: url)
-    return true
-}
-
-@available(iOS 9.0, *)
 func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
     manager.handleOpen(url: url)
     return true

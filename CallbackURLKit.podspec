@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "CallbackURLKit"
-  s.version      = "1.0.1"
+  s.version      = "1.2.0"
   s.summary      = "Implemenation of x-callback-url in swift"
   s.homepage     = "https://github.com/phimage/CallbackURLKit"
 
@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
   s.author             = { "phimage" => "eric.marchand.n7@gmail.com" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.ios.deployment_target = '8.0'
-  s.osx.deployment_target = '10.9'
+  s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.11'
   s.tvos.deployment_target = '9.0'
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
