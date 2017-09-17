@@ -38,7 +38,7 @@ open class Manager {
     var actions: [Action: ActionHandler] = [:]
     /// keep request for callback
     var requests: [RequestID: Request] = [:]
-pecify an URL scheme for callback
+
     open var callbackURLScheme: String?
     
     #if APP_EXTENSIONS
@@ -240,7 +240,10 @@ pecify an URL scheme for callback
         return result
     }
 
-    
+    open static func open(url: Foundation.URL) {
+        Manager.shared.open(url: url)
+    }
+
     open func open(url: Foundation.URL) {
         #if APP_EXTENSIONS
             if let extensionContext = extensionContext {

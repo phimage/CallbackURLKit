@@ -25,6 +25,16 @@
 		C4E32D5E1C398AE5005CD033 /* GoogleChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C445365D1F6F05E20006FFC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4A8D5071C37D84A00DB3306 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4A8D50F1C37D84A00DB3306;
+			remoteInfo = CallbackURLKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		48D0A1491F0E28CE0019B815 /* Ulysses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ulysses.swift; path = Clients/Ulysses.swift; sourceTree = "<group>"; };
 		C418B1DA1C386C160097FDD9 /* CallbackURLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +228,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C445365E1F6F05E20006FFC4 /* PBXTargetDependency */,
 			);
 			name = CallbackURLKitClients;
 			productName = CallbackURLKitClients;
@@ -324,6 +335,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C445365E1F6F05E20006FFC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4A8D50F1C37D84A00DB3306 /* CallbackURLKit */;
+			targetProxy = C445365D1F6F05E20006FFC4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		C418B1E01C386C160097FDD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -338,7 +357,7 @@
 				INFOPLIST_FILE = CallbackURLKitOSX/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitOSX;
 				PRODUCT_NAME = CallbackURLKit;
 				SDKROOT = macosx;
@@ -361,7 +380,7 @@
 				INFOPLIST_FILE = CallbackURLKitOSX/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitOSX;
 				PRODUCT_NAME = CallbackURLKit;
 				SDKROOT = macosx;

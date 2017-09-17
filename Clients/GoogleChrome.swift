@@ -45,7 +45,7 @@ public class GoogleChrome: Client {
      */
     public func checkInstalled() {
       if !self.appInstalled, let url = GoogleChrome.DownloadURL {
-        Manager.shared.open(url: url)
+        Manager.open(url: url)
       }
     }
 
