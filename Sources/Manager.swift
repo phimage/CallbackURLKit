@@ -73,7 +73,8 @@ open class Manager {
         }
         let path = url.path
 
-        let action = String(path.characters.dropFirst()) // remove /
+        let indexStartOfText = path.index(path.startIndex, offsetBy: 1)
+        let action = String(path[indexStartOfText...])
 
         let parameters = url.query?.toQueryDictionary ?? [:]
         let actionParameters = Manager.action(parameters: parameters)
