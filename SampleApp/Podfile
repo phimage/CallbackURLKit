@@ -8,7 +8,7 @@ target 'CallbackURLKitDemo' do
 end
 
 target 'CallbackURLKitDemoOSX' do
-  platform :osx, '10.10'
+  platform :osx, '10.11'
     pod 'CallbackURLKit/GoogleChrome', :path => '../CallbackURLKit.podspec'
   	pod 'CallbackURLKit/Ulysses', :path => '../CallbackURLKit.podspec'
 end
