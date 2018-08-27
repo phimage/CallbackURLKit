@@ -40,6 +40,8 @@ open class Manager {
     var requests: [RequestID: Request] = [:]
 
     open var callbackURLScheme: String?
+
+    open var callbackQueue: DispatchQueue = .main
     
     #if APP_EXTENSIONS
     /// In case of application extension, put your extensionContext here
@@ -126,7 +128,9 @@ open class Manager {
                 var comp = URLComponents(url: url, resolvingAgainstBaseURL: false)!
                 comp &= error.XCUErrorQuery
                 if let newURL = comp.url {
-                    self.open(url: newURL)
+                    callbackQueue.async {
+                        self.open(url: newURL)
+                    }
                 }
                 return true
             }
@@ -139,7 +143,9 @@ open class Manager {
             var comp = URLComponents(url: url, resolvingAgainstBaseURL: false) {
             handler?(&comp)
             if let newURL = comp.url {
-                self.open(url: newURL)
+                callbackQueue.async {
+                    self.open(url: newURL)
+                }
             }
         }
     }
