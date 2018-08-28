@@ -80,23 +80,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C418B1DB1C386C160097FDD9 /* CallbackURLKitOSX */ = {
+		488C5E6F2135938B00AFE63C /* Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				C4E32D571C398AE1005CD033 /* Clients */,
+				C4A8D5121C37D84A00DB3306 /* iOS */,
+				C418B1DB1C386C160097FDD9 /* macOS */,
+			);
+			path = Xcode;
+			sourceTree = "<group>";
+		};
+		C418B1DB1C386C160097FDD9 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
 				C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */,
 				C418B1DE1C386C160097FDD9 /* Info.plist */,
 			);
-			path = CallbackURLKitOSX;
+			path = macOS;
 			sourceTree = "<group>";
 		};
 		C4A8D5061C37D84A00DB3306 = {
 			isa = PBXGroup;
 			children = (
 				C4DB1E2B1D8421DE008DD3FB /* Sources */,
-				C4A8D5121C37D84A00DB3306 /* CallbackURLKit */,
-				C418B1DB1C386C160097FDD9 /* CallbackURLKitOSX */,
+				488C5E6F2135938B00AFE63C /* Xcode */,
 				C4E32D501C398AAE005CD033 /* Clients */,
-				C4E32D571C398AE1005CD033 /* CallbackURLKitClients */,
 				C4A8D5111C37D84A00DB3306 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,13 +119,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C4A8D5121C37D84A00DB3306 /* CallbackURLKit */ = {
+		C4A8D5121C37D84A00DB3306 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */,
 				C4A8D5151C37D84A00DB3306 /* Info.plist */,
 			);
-			path = CallbackURLKit;
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		C4DB1E2B1D8421DE008DD3FB /* Sources */ = {
@@ -141,13 +149,13 @@
 			name = Clients;
 			sourceTree = "<group>";
 		};
-		C4E32D571C398AE1005CD033 /* CallbackURLKitClients */ = {
+		C4E32D571C398AE1005CD033 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
 				C4E32D581C398AE1005CD033 /* CallbackURLKitClients.h */,
 				C4E32D5A1C398AE1005CD033 /* Info.plist */,
 			);
-			path = CallbackURLKitClients;
+			path = Clients;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,7 +362,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = CallbackURLKitOSX/Info.plist;
+				INFOPLIST_FILE = Xcode/macOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -377,7 +385,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = CallbackURLKitOSX/Info.plist;
+				INFOPLIST_FILE = Xcode/macOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -511,7 +519,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CallbackURLKit/Info.plist;
+				INFOPLIST_FILE = Xcode/iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
@@ -533,7 +541,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CallbackURLKit/Info.plist;
+				INFOPLIST_FILE = Xcode/iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
@@ -553,7 +561,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CallbackURLKitClients/Info.plist;
+				INFOPLIST_FILE = Xcode/Clients/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DIMPORT";
@@ -573,7 +581,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CallbackURLKitClients/Info.plist;
+				INFOPLIST_FILE = Xcode/Clients/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DIMPORT";
