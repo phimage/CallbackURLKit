@@ -23,6 +23,7 @@
 #if IMPORT
     import CallbackURLKit
 #endif
+import Foundation
 
 /*
  Google chrome client class
