@@ -42,6 +42,9 @@ open class Manager {
     open var callbackURLScheme: String?
 
     open var callbackQueue: DispatchQueue = .main
+
+	// no action match, default action
+	open var noMatchActionCallback: NoActionMatchCallback?
     
     #if APP_EXTENSIONS
     /// In case of application extension, put your extensionContext here
@@ -133,7 +136,9 @@ open class Manager {
                     }
                 }
                 return true
-            }
+			} else  {
+				noMatchActionCallback?(parameters)
+			}
         }
         return false
     }
@@ -266,7 +271,7 @@ open class Manager {
             #if os(iOS) || os(tvOS)
                 UIApplication.shared.openURL(url)
             #elseif os(OSX)
-                NSWorkspace.shared.open(url)
+				NSWorkspace.shared.open(url)
             #endif
         #endif
     }

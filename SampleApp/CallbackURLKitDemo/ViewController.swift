@@ -56,7 +56,7 @@ extension ViewController {
             print("exception \(e)")
         }
     }
-    
+
     @IBAction func ulysseAuthorize(_ sender: AnyObject!) {
         let ulysses = Ulysses()
         do {

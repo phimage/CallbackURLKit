@@ -45,7 +45,7 @@ open class Client {
             return UIApplication.shared.canOpenURL(url)
     
         #elseif os(OSX)
-            return NSWorkspace.shared.urlForApplication(toOpen: url) != nil
+		return NSWorkspace.shared.urlForApplication(toOpen: url) != nil
         #endif
     }
 

@@ -14,10 +14,15 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let manager = Manager.shared
         manager.callbackURLScheme = Manager.urlSchemes?.first
         manager[CallbackURLKitDemo.PrintActionString] = CallbackURLKitDemo.PrintAction
+		manager.noMatchActionCallback = { parameters in
+			DispatchQueue.main.async {
+				print("no action match")
+			}
+		}
         
         return true
     }
@@ -46,6 +51,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
+		manager.noMatchActionCallback = { parameters in
+			DispatchQueue.main.async {
+				print("no action match")
+			}
+		}
     }
     
 }
