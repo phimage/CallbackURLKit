@@ -26,7 +26,7 @@ enum DemoError: FailureCallbackError {
 
 open class CallbackURLKitDemo: Client {
     
-    open static let instance = CallbackURLKitDemo()
+    public static let instance = CallbackURLKitDemo()
     
     public init() {
         super.init(urlScheme: "callbackurlkit")
@@ -38,8 +38,8 @@ open class CallbackURLKitDemo: Client {
                                onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
     
-    open static let PrintActionString = "print"
-    open static let PrintAction: ActionHandler = { parameters, success, failed, cancel in
+    public static let PrintActionString = "print"
+    public static let PrintAction: ActionHandler = { parameters, success, failed, cancel in
         if let text = parameters["text"] {
             print(text)
             let formatter = DateFormatter()
