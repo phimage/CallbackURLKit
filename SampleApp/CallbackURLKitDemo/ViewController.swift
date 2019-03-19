@@ -64,6 +64,8 @@ extension ViewController {
                 appName: Manager.shared.callbackURLScheme ?? "callbackUrlKit",
                 onSuccess:  { token in
                     print("token \(token)")
+
+                    // try? ulysses.newSheet(text: "test")
             },
                 onFailure: { error in
                     print("\(error)")

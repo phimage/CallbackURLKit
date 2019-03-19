@@ -1,8 +1,8 @@
 PODS:
-  - CallbackURLKit/Core (2.1.0)
-  - CallbackURLKit/GoogleChrome (2.1.0):
+  - CallbackURLKit/Core (2.2.0)
+  - CallbackURLKit/GoogleChrome (2.2.0):
     - CallbackURLKit/Core
-  - CallbackURLKit/Ulysses (2.1.0):
+  - CallbackURLKit/Ulysses (2.2.0):
     - CallbackURLKit/Core
 
 DEPENDENCIES:
@@ -14,8 +14,8 @@ EXTERNAL SOURCES:
     :path: "../CallbackURLKit.podspec"
 
 SPEC CHECKSUMS:
-  CallbackURLKit: 41dbd03ebe4b14a85267aa4efc0bbf8bafc0e780
+  CallbackURLKit: 63d4ce4c79a0344179d7d5fd9c38175b732b8a6f
 
 PODFILE CHECKSUM: fb5ecaad3a4ff4b9fb6982c1b7d7eb6f545e5d0b
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.6.0
