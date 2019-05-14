@@ -252,22 +252,22 @@ open class Manager {
 
     open func open(url: Foundation.URL) {
         #if APP_EXTENSIONS
-            if let extensionContext = extensionContext {
-                extensionContext.open(url, completionHandler: extensionContextCompletionHandler)
-            }
-            else {
-                #if os(iOS) || os(tvOS)
-                    UIApplication.shared.openURL(url)
-                #elseif os(OSX)
-                    NSWorkspace.shared.open(url)
-                #endif
-            }
-        #else
+        if let extensionContext = extensionContext {
+            extensionContext.open(url, completionHandler: extensionContextCompletionHandler)
+        }
+        else {
             #if os(iOS) || os(tvOS)
-                UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url)
             #elseif os(OSX)
-                NSWorkspace.shared.open(url)
+            NSWorkspace.shared.open(url)
             #endif
+        }
+        #else
+        #if os(iOS) || os(tvOS)
+        UIApplication.shared.open(url)
+        #elseif os(OSX)
+        NSWorkspace.shared.open(url)
+        #endif
         #endif
     }
 
