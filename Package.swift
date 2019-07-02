@@ -1,3 +1,4 @@
+// swift-tools-version:5.0
 // Package.swift
 /*
  The MIT License (MIT)
@@ -22,5 +23,15 @@
 import PackageDescription
 
 let package = Package(
-  name: "CallbackURLKit"
+    name: "CallbackURLKit",
+    platforms: [.iOS(.v11), .macOS(.v10_14), .tvOS(.v10)],
+    products: [
+        .library(name: "CallbackURLKit", targets: ["CallbackURLKit"])
+    ],
+    targets: [
+        .target(
+            name: "CallbackURLKit",
+            path: "Sources"
+        )
+    ]
 )
