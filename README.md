@@ -72,9 +72,9 @@ see full sample into [Clients](/Clients) directory. *(You can PR to add new `Cli
 You can check that an application respond to the URL scheme using `client.appInstalled`
 
 #### Use callback closure
-Callbacks allow you to receives informations or status from the targeted applications but before you need to [add x-callback-url support to your app](#add-x-callback-url-support-to-your-app).
+Callbacks allow you to receive data from the target applications, *but before doing this you need to [add x-callback-url support to your app](#add-x-callback-url-support-to-your-app).*
 
-Then you can specify one of the 3 x-callbacks: success, failure and cancel
+Then you can specify one of the 3 x-callbacks: success, failure and cancel.
 
 ```swift
 try client.perform(action: "actionName",
