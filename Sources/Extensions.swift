@@ -30,7 +30,7 @@ extension String {
         var result: [String : String] = [String : String]()
         let pairs: [String] = self.components(separatedBy: "&")
         for pair in pairs {
-            var comps: [String] = pair.components(separatedBy: "=")
+            let comps: [String] = pair.components(separatedBy: "=")
             if comps.count >= 2 {
                 let key = comps[0]
                 let value = comps.dropFirst().joined(separator: "=")
