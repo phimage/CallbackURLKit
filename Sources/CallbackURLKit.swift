@@ -35,9 +35,7 @@ public typealias SuccessCallback = (Parameters?) -> Void
 public typealias FailureCallback = (FailureCallbackError) -> Void
 public typealias CancelCallback = () -> Void
 
-
 // MARK: global functions
-
 
 // Perform an action on client application
 // - Parameter action: The action to perform.
@@ -70,7 +68,7 @@ public protocol FailureCallbackError: Error {
     var message: String {get}
 }
 extension FailureCallbackError {
-    public var XCUErrorParameters: Parameters  {
+    public var XCUErrorParameters: Parameters {
         return [kXCUErrorCode: "\(self.code)", kXCUErrorMessage: self.message]
     }
     public var XCUErrorQuery: String {
@@ -95,7 +93,7 @@ extension FailureCallbackError {
 }
 
 // Framework errors
-public enum CallbackURLKitError : Error {
+public enum CallbackURLKitError: Error {
     // It's seems that application with specified scheme has not installed
     case appWithSchemeNotInstalled(scheme: String)
     // Failed to create NSURL for request
@@ -121,10 +119,9 @@ let kXCUErrorMessage = "errorMessage"
 // URL to open if the requested action is cancelled by the user. In the case where the target app offer the user the option to “cancel” the requested action, without a success or error result, this the the URL that should be opened to return the user to the source app.
 let kXCUCancel       = "x-cancel"
 
-
 // MARK: - framework strings
 
 let kResponse  = "response"
-let kResponseType = "responseType";
+let kResponseType = "responseType"
 let kRequestID  = "requestID"
 let protocolKeys = [kResponse, kResponseType, kRequestID]

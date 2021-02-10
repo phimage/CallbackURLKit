@@ -17,7 +17,7 @@ import CallbackURLKit
 #endif
 
 extension ViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,19 +28,19 @@ extension ViewController {
             try chrome.open(url: "http://www.google.com")
         } catch CallbackURLKitError.appWithSchemeNotInstalled(let scheme) {
             print("chrome(\(scheme)) not installed or not implement x-callback-url in current os")
-            
+
         } catch CallbackURLKitError.callbackURLSchemeNotDefined {
             print("current app scheme not defined")
         } catch let e {
             print("exception \(e)")
         }
     }
-    
+
     @IBAction func printAction(_ sender: AnyObject!) {
         do {
             try CallbackURLKitDemo.instance.printMessage(
                 "a message  %20 %  = &toto=a",
-                onSuccess:  { parameters in
+                onSuccess: { parameters in
                     print("parameters \(String(describing: parameters))")
                 },
                 onFailure: { error in
@@ -49,20 +49,20 @@ extension ViewController {
             )
         } catch CallbackURLKitError.appWithSchemeNotInstalled(let scheme) {
             print("\(scheme) not installed or not implement x-callback-url in current os")
-            
+
         } catch CallbackURLKitError.callbackURLSchemeNotDefined {
             print("current app scheme not defined")
         } catch let e {
             print("exception \(e)")
         }
     }
-    
+
     @IBAction func ulysseAuthorize(_ sender: AnyObject!) {
         let ulysses = Ulysses()
         do {
             try ulysses.authorize(
                 appName: Manager.shared.callbackURLScheme ?? "callbackUrlKit",
-                onSuccess:  { token in
+                onSuccess: { token in
                     print("token \(token)")
 
                     // try? ulysses.newSheet(text: "test")
@@ -71,17 +71,15 @@ extension ViewController {
                     print("\(error)")
             }
             )
-            
+
         } catch CallbackURLKitError.appWithSchemeNotInstalled(let scheme) {
             print("chrome(\(scheme)) not installed or not implement x-callback-url in current os")
-            
+
         } catch CallbackURLKitError.callbackURLSchemeNotDefined {
             print("current app scheme not defined")
         } catch let e {
             print("exception \(e)")
         }
     }
-    
 
 }
-

@@ -32,18 +32,18 @@ open class Client {
 
     open var urlScheme: String
     open var manager: Manager?
-    
+
     public init(urlScheme: String) {
         self.urlScheme = urlScheme
     }
- 
+
     open var appInstalled: Bool {
-        guard let url = URL(string:"\(self.urlScheme)://dummy") else {
+        guard let url = URL(string: "\(self.urlScheme)://dummy") else {
             return false
         }
         #if os(iOS) || os(tvOS)
             return UIApplication.shared.canOpenURL(url)
-    
+
         #elseif os(OSX)
             return NSWorkspace.shared.urlForApplication(toOpen: url) != nil
         #endif
@@ -60,11 +60,11 @@ open class Client {
 
     open func perform(action: Action, parameters: Parameters = [:],
                       onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
-        
+
         let request = Request(
             ID: UUID().uuidString, client: self,
             action: action, parameters: parameters,
-            successCallback: onSuccess, failureCallback: onFailure, cancelCallback:  onCancel
+            successCallback: onSuccess, failureCallback: onFailure, cancelCallback: onCancel
         )
 
         let manager = self.manager ?? Manager.shared
@@ -74,7 +74,7 @@ open class Client {
     // Return an error according to url, could be changed to fulfiled your need
     open func error(code: String?, message: String?) -> FailureCallbackError {
         let codeInt: Int
-        if let c = code, let ci = Int(c)  {
+        if let c = code, let ci = Int(c) {
             codeInt = ci
         } else {
             codeInt = ErrorCode.missingErrorCode.rawValue

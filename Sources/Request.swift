@@ -69,7 +69,7 @@ enum ResponseType: String {
     case success
     case error
     case cancel
-    
+
     var key: String {
         switch self {
         case .success:
@@ -81,4 +81,3 @@ enum ResponseType: String {
         }
     }
 }
-

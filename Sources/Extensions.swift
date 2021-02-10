@@ -26,8 +26,8 @@ import Foundation
 // MARK: String
 extension String {
 
-    var toQueryDictionary: [String : String] {
-        var result: [String : String] = [String : String]()
+    var toQueryDictionary: [String: String] {
+        var result: [String: String] = [String: String]()
         let pairs: [String] = self.components(separatedBy: "&")
         for pair in pairs {
             let comps: [String] = pair.components(separatedBy: "=")
@@ -43,17 +43,17 @@ extension String {
     var queryEncodeRFC3986: String {
         let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
         let subDelimitersToEncode = "!$&'()*+,;="
-        
+
         var allowedCharacterSet = CharacterSet.urlQueryAllowed
-        allowedCharacterSet.remove(charactersIn : generalDelimitersToEncode + subDelimitersToEncode)
-        
+        allowedCharacterSet.remove(charactersIn: generalDelimitersToEncode + subDelimitersToEncode)
+
         return self.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? self
     }
-    
+
     var queryEncode: String {
         return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? self
     }
-    
+
     var queryDecode: String {
         return self.removingPercentEncoding ?? self
     }
@@ -73,31 +73,30 @@ extension Dictionary {
         }
         return parts.joined(separator: "&") as String
     }
-    
+
     fileprivate func join(_ other: Dictionary) -> Dictionary {
         var joinedDictionary = Dictionary()
-        
+
         for (key, value) in self {
             joinedDictionary.updateValue(value, forKey: key)
         }
-        
+
         for (key, value) in other {
             joinedDictionary.updateValue(value, forKey: key)
         }
-        
+
         return joinedDictionary
     }
-    
+
     init(_ pairs: [Element]) {
         self.init()
         for (k, v) in pairs {
             self[k] = v
         }
     }
-    
-}
-func +<K, V> (left: [K : V], right: [K : V]) -> [K : V] { return left.join(right) }
 
+}
+func +<K, V> (left: [K: V], right: [K: V]) -> [K: V] { return left.join(right) }
 
 // MARK: NSURLComponents
 extension URLComponents {
@@ -125,8 +124,7 @@ extension URLComponents {
             self.percentEncodedQuery = add
         }
     }
-    
+
 }
 
 func &= (left: inout URLComponents, right: String) { left.addToQuery(right) }
-

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let manager = Manager.shared
         manager.callbackURLScheme = Manager.urlSchemes?.first
         manager[CallbackURLKitDemo.PrintActionString] = CallbackURLKitDemo.PrintAction
-        
+
         return true
     }
 
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-    
+
 #elseif os(OSX)
 import Cocoa
 
@@ -39,15 +39,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         manager.registerToURLEvent()
         manager.callbackURLScheme = Manager.urlSchemes?.first
         manager[CallbackURLKitDemo.PrintActionString] = CallbackURLKitDemo.PrintAction
-        
-        manager["success"] = { (parameters, success, failure, cancel) in
+
+        manager["success"] = { (_, success, _, _) in
             DispatchQueue.main.async {
                 success(nil)
             }
         }
 
     }
-    
+
 }
 
 #endif

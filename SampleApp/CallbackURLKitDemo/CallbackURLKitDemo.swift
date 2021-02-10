@@ -11,7 +11,7 @@ import CallbackURLKit
 
 enum DemoError: FailureCallbackError {
     case noText
-    
+
     var code: Int {
         switch self {
         case .noText: return 0
@@ -25,32 +25,32 @@ enum DemoError: FailureCallbackError {
 }
 
 open class CallbackURLKitDemo: Client {
-    
+
     public static let instance = CallbackURLKitDemo()
-    
+
     public init() {
         super.init(urlScheme: "callbackurlkit")
     }
-    
+
     open func printMessage(_ message: String, onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
         let parameters = ["text": message]
         try self.perform(action: CallbackURLKitDemo.PrintActionString, parameters: parameters,
                                onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
-    
+
     public static let PrintActionString = "print"
-    public static let PrintAction: ActionHandler = { parameters, success, failed, cancel in
+    public static let PrintAction: ActionHandler = { parameters, success, failed, _ in
         if let text = parameters["text"] {
             print(text)
             let formatter = DateFormatter()
             formatter.dateStyle = .long
             formatter.timeStyle = .medium
-            
+
             let dateString = formatter.string(from: Date())
             success(["text": text, "date": dateString])
         } else {
             failed(DemoError.noText)
         }
     }
-    
+
 }

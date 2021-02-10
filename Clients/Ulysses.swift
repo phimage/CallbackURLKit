@@ -85,7 +85,7 @@ public class Ulysses: Client {
      @param index  Optional. The position of the new sheet in its parent group. Use 0 to make it the first sheet. Available since Ulysses 2.8 (API version 2).
      */
     public func newSheet(text: String, group: String? = nil, format: String? = nil, index: String? = nil, onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
-        
+
         var parameters = ["text": text]
         if let group = group {
             parameters["group"] = group
@@ -96,7 +96,7 @@ public class Ulysses: Client {
         if let index = index {
             parameters["index"] = index
         }
-        
+
         try self.perform(action: "new-sheet", parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
 
