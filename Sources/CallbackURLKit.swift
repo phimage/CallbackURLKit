@@ -116,7 +116,7 @@ let kXCUSource       = "x-source"
 let kXCUSuccess      = "x-success"
 // URL to open if the requested action generates an error in the target app. This URL will be open with at least the parameters “errorCode=code&errorMessage=message”. If x-error is not present, and a error occurs, it is assumed the target app will report the failure to the user and remain in the target app.
 let kXCUError        = "x-error"
-let kXCUErrorCode    = "error-Code"
+let kXCUErrorCode    = "errorCode"
 let kXCUErrorMessage = "errorMessage"
 // URL to open if the requested action is cancelled by the user. In the case where the target app offer the user the option to “cancel” the requested action, without a success or error result, this the the URL that should be opened to return the user to the source app.
 let kXCUCancel       = "x-cancel"
