@@ -252,14 +252,22 @@ open class Manager {
             extensionContext.open(url, completionHandler: extensionContextCompletionHandler)
         } else {
             #if os(iOS) || os(tvOS)
-            UIApplication.shared.open(url)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
             #elseif os(OSX)
             NSWorkspace.shared.open(url)
             #endif
         }
         #else
         #if os(iOS) || os(tvOS)
-        UIApplication.shared.open(url)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
         #elseif os(OSX)
         NSWorkspace.shared.open(url)
         #endif

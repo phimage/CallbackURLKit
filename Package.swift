@@ -24,7 +24,7 @@ import PackageDescription
 
 let package = Package(
     name: "CallbackURLKit",
-    platforms: [.iOS(.v11), .macOS(.v10_14), .tvOS(.v10)],
+    platforms: [.iOS(.v9), .macOS(.v10_14), .tvOS(.v10)],
     products: [
         .library(name: "CallbackURLKit", targets: ["CallbackURLKit"])
     ],
