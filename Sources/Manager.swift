@@ -41,7 +41,7 @@ open class Manager {
 
     open var callbackURLScheme: String?
 
-    open var callbackQueue: DispatchQueue = .main
+    open var callbackQueue: DispatchQueue = .global(qos: .background) // .main
 
     #if APP_EXTENSIONS
     /// In case of application extension, put your extensionContext here
@@ -252,8 +252,13 @@ open class Manager {
             extensionContext.open(url, completionHandler: extensionContextCompletionHandler)
         } else {
             #if os(iOS) || os(tvOS)
+            guard UIApplication.shared.canOpenURL(url) else {
+                return
+            }
             if #available(iOS 10.0, tvOS 10.0, *) {
-                UIApplication.shared.open(url)
+                UIApplication.shared.open(url, options: [:]) { sussess in
+                    NSLog("open url \(success)")
+                }
             } else {
                 UIApplication.shared.openURL(url)
             }
@@ -263,8 +268,13 @@ open class Manager {
         }
         #else
         #if os(iOS) || os(tvOS)
+        guard UIApplication.shared.canOpenURL(url) else {
+            return
+        }
         if #available(iOS 10.0, tvOS 10.0, *) {
-            UIApplication.shared.open(url)
+            UIApplication.shared.open(url, options:[:]) { success in
+                NSLog("open url \(success)")
+            }
         } else {
             UIApplication.shared.openURL(url)
         }
