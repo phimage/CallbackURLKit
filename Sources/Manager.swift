@@ -256,8 +256,8 @@ open class Manager {
                 return
             }
             if #available(iOS 10.0, tvOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:]) { sussess in
-                    _ = sussess
+                UIApplication.shared.open(url, options: [:]) { success in
+                    _ = success
                     NSLog("open url \(success)")
                 }
             } else {
@@ -274,7 +274,7 @@ open class Manager {
         }
         if #available(iOS 10.0, tvOS 10.0, *) {
             UIApplication.shared.open(url, options: [:]) { success in
-                _ = sussess
+                _ = success
                 NSLog("open url \(success)")
             }
         } else {
